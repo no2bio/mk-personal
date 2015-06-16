@@ -20,22 +20,6 @@ var counts = {};
 var partyList = [];
 
 function startPage() {
-	for (var k in parties) {
-		if (parties.hasOwnProperty(k)) {
-			partyList.push(k);
-		}
-	}
-	d3.select("#partySelect")
-		.selectAll("option")
-		.data(partyList)
-		.enter()
-		.append("option")
-		.attr("value", function(p) {
-			return p;
-		})
-		.text(function(p) {
-			return parties[p].name;
-		});
 	loadMKs();
 }
 
@@ -77,6 +61,7 @@ function updateMkDisplay() {
 		});
 	var mksEnter = mksUpdate.enter()
 		.append("li")
+    .style("display","inline-block")
 		.attr("class", function(mk) {
 			return "status-" + mk.status;
 		})
@@ -87,14 +72,16 @@ function updateMkDisplay() {
 		.duration(1000)
 		.style("width", "0px")
 		.style("opacity", "0")
-		.remove();
+    .remove();
 
   counts.y=0;
   counts.n=0;
   counts.u=0;
-  for ( var i=0; i<filtered.length; i++ ) {
-    var mk = filtered[i];
-    counts[mk.status] = counts[mk.status]+1;
+  for ( var i=0; i<mks.length; i++ ) {
+    var mk = mks[i];
+    if ( partyFilter(mk) ) {
+      counts[mk.status] = counts[mk.status]+1;
+    }
   }
 
   $("#noCount").text(counts.n);
