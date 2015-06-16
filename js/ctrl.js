@@ -105,7 +105,7 @@ function buildContacts( mk ) {
   if ( mk.twitterHandle && mk.twitterHandle !== "" ) {
     retVal = retVal +
       "<a href='https://twitter.com/intent/tweet?url=http%3A%2F%2Fexperiment-end.no2bio.org&via=no2bio&text=" +
-      "ציוץ התנגדות או עידוד" + "' target='_blank'>" +
+      tweets[mk.gender][mk.status] + "' target='_blank'>" +
       "<i class='fa fa-twitter'></i></a>"
   }
   if ( mk.email && mk.email !== "" ) {
