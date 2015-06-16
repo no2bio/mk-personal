@@ -1,0 +1,106 @@
+@charset "utf-8";
+@font-face {
+  font-family: 'Alef';
+  src: url('../fonts/Alef-Bold.eot');
+  src: url('../fonts/Alef-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/Alef-Bold.woff') format('woff'), url('../fonts/Alef-Bold.ttf') format('truetype'), url('../fonts/Alef-Bold.svg#alefbold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Alef';
+  src: url('../fonts/Alef-Regular.eot');
+  src: url('../fonts/Alef-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/Alef-Regular.woff') format('woff'), url('../fonts/Alef-Regular.ttf') format('truetype'), url('../fonts/Alef-Regular.svg#alefregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  direction: rtl;
+  font-family: Alef, Helvetica, "Arial Hebrew", Arial;
+}
+#partySelect {
+  color: black;
+  height: 2em;
+}
+ul.mk-list {
+  padding: 0;
+  list-style: outside none none;
+  text-align: center;
+}
+ul.mk-list li {
+  position: relative;
+  display: inline-block;
+  width: 160px;
+  height: 195px;
+  margin: 1em;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+ul.mk-list li .mk-image {
+  margin-top: 5px;
+  max-width: 150px;
+  /* fix megalomanic scans ;) */
+}
+ul.mk-list li .mk-name {
+  text-align: center;
+  font-weight: bold;
+}
+ul.mk-list li .mk-party {
+  font-weight: normal;
+}
+ul.mk-list li .mk-contact a {
+  color: white;
+  margin: 4px;
+}
+ul.mk-list li a {
+  color: black;
+}
+ul.mk-list li a:hover {
+  background-color: gray;
+}
+ul.mk-list .li-yes {
+  background-color: #32b33b;
+}
+ul.mk-list .li-no {
+  background-color: #f62c10;
+}
+ul.mk-list .li-undecided {
+  background-color: #aaa;
+}
+ul.mk-list li::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 5px;
+  height: 150px;
+  left: 5px;
+  right: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+ul.mk-list .status-y::after {
+  background-color: rgba(50, 179, 59, 0.25);
+}
+ul.mk-list .status-n::after {
+  background-color: rgba(246, 44, 16, 0.25);
+}
+ul.mk-list .status-u::after {
+  background-color: rgba(136, 136, 136, 0.25);
+}
+#mks li {
+  position: relative;
+  display: inline-block;
+  width: 160px;
+  height: 220px;
+  margin: 1em;
+  text-align: center;
+  vertical-align: text-bottom;
+  overflow: hidden;
+}
+#mks li.status-y {
+  background-color: #32b33b;
+}
+#mks li.status-n {
+  background-color: #f62c10;
+}
+#mks li.status-u {
+  background-color: #888888;
+}
