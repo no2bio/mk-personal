@@ -5,37 +5,37 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>מצב הח״כים</h2>
                     <div>
-                        <div class="btn-group" data-toggle="buttons">
-                          <label class="btn btn-primary active">
-                            <input type="radio" name="options" id="option1" onchange="filterBySupport(null)" autocomplete="off" checked>כולם
-                          </label>
-                          <label class="btn btn-danger">
-                            <input type="radio" name="options" id="btnNo" onchange="filterBySupport('n')" autocomplete="off"> תומכי מאגר
-                            <span class="badge" id="noCount">0</span>
-                          </label>
-                          <label class="btn btn-default">
-                            <input type="radio" name="options" id="btnUndecided" onchange="filterBySupport('u')" autocomplete="off">לא החליטו
-                            <span class="badge" id="undecidedCount">0</span>
-                          </label>
-                          <label class="btn btn-success">
-                            <input type="radio" name="options" id="btnYes" onchange="filterBySupport('y')" autocomplete="off"> תומכי ביטול
-                            <span class="badge" id="yesCount">0</span>
-                          </label>
-                        </div>
-                        <br />
-                        <select id="partySelect" onchange="filterByParty( this.value )" autocomplete="off">
-                            <option id="all" value="all">כל המפלגות</option>
-                            <option value="likud"> הליכוד</option>
-                            <option value="hamahane-hazioni"> המחנה הציוני</option>
-                            <option value="habait-hayehudi"> הבית היהודי</option>
-                            <option value="yeshatid"> יש עתיד</option>
-                            <option value="yisrael-beitenu"> ישראל ביתנו</option>
-                            <option value="kulanu"> כולנו</option>
-                            <option value="meretz"> מרצ</option>
-                            <option value="reshima-aravit"> הרשימה המשותפת</option>
-                            <option value="shas">ש"ס</option>
-                            <option value="yahadut-hatora">יהדות התורה</option>
-                        </select>
+                      <select id="partySelect" onchange="filterByParty( this.value )" autocomplete="off">
+                          <option id="all" value="all">כל המפלגות</option>
+                          <option value="likud"> הליכוד</option>
+                          <option value="hamahane-hazioni"> המחנה הציוני</option>
+                          <option value="habait-hayehudi"> הבית היהודי</option>
+                          <option value="yeshatid"> יש עתיד</option>
+                          <option value="yisrael-beitenu"> ישראל ביתנו</option>
+                          <option value="kulanu"> כולנו</option>
+                          <option value="meretz"> מרצ</option>
+                          <option value="reshima-aravit"> הרשימה המשותפת</option>
+                          <option value="shas">ש"ס</option>
+                          <option value="yahadut-hatora">יהדות התורה</option>
+                      </select>
+                      <br />
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary btn-sm">
+                          <input type="radio" name="options" id="option1" onchange="filterBySupport(null)" autocomplete="off">כולם
+                        </label>
+                        <label class="btn btn-danger btn-sm">
+                          <input type="radio" name="options" id="btnNo" onchange="filterBySupport('n')" autocomplete="off"> תומכי מאגר
+                          <span class="badge" id="noCount">0</span>
+                        </label>
+                        <label class="btn btn-default btn-sm active">
+                          <input type="radio" name="options" id="btnUndecided" onchange="filterBySupport('u')" autocomplete="off" checked>מתלבטים
+                          <span class="badge" id="undecidedCount">0</span>
+                        </label>
+                        <label class="btn btn-success btn-sm">
+                          <input type="radio" name="options" id="btnYes" onchange="filterBySupport('y')" autocomplete="off"> תומכי ביטול
+                          <span class="badge" id="yesCount">0</span>
+                        </label>
+                      </div>
                     </div>
                     <div>
                       <ul id="mks" class="mk-list">

@@ -20,6 +20,9 @@ var counts = {};
 var partyList = [];
 
 function startPage() {
+  supportFilter = function(mk) {
+    return mk.status === "u";
+  };
 	loadMKs();
 }
 
@@ -123,7 +126,7 @@ function filterBySupport(what) {
 			return mk.status === what;
 		};
 	}
-	updateMkDisplay();
+  updateMkDisplay();
 }
 
 function filterByParty(which) {

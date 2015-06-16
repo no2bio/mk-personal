@@ -104,3 +104,9 @@ ul.mk-list .status-u::after {
 #mks li.status-u {
   background-color: #888888;
 }
+#about p {
+  font-size: 16px;
+}
+#final-slogan em {
+  color: yellow;
+}
