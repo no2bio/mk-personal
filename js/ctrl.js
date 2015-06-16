@@ -2,7 +2,7 @@
  * Main controller for the index page.
  */
 
-var spreadsheetUrl = "/data/mks.csv";
+var spreadsheetUrl = "data/mks.csv";
 
 /**
  *
@@ -103,7 +103,7 @@ function updateMkDisplay() {
 }
 
 function buildMkContent(mk) {
-  return "<img class='mk-image' src='/img/mks/" + mk.alias + ".jpg' alt=''" + mk.name + "'/>\n" +
+  return "<img class='mk-image' src='img/mks/" + mk.alias + ".jpg' alt=''" + mk.name + "'/>\n" +
           "<div class='mk-name'>" + mk.name + "</div>" +
           "<div class='mk-party'>" + mk.party.name + "</div>" +
           "<div class='mk-contact'>" + buildContacts(mk) + "</div>";
