@@ -29,11 +29,22 @@ ul.mk-list {
 ul.mk-list li {
   position: relative;
   display: inline-block;
-  width: 160px;
-  height: 195px;
+  width: 110px;
+  height: 170px;
   margin: 1em;
   text-align: center;
+  vertical-align: text-bottom;
+  overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+ul.mk-list li.status-y {
+  background-color: #32b33b;
+}
+ul.mk-list li.status-n {
+  background-color: #f62c10;
+}
+ul.mk-list li.status-u {
+  background-color: #888888;
 }
 ul.mk-list li .mk-image {
   margin-top: 5px;
@@ -49,13 +60,12 @@ ul.mk-list li .mk-party {
 }
 ul.mk-list li .mk-contact a {
   color: white;
-  margin: 4px;
+  margin: 2px;
+  padding: 2px;
 }
-ul.mk-list li a {
-  color: black;
-}
-ul.mk-list li a:hover {
-  background-color: gray;
+ul.mk-list li .mk-contact a:hover {
+  background-color: black;
+  text-shadow: 0 0 3px yellow;
 }
 ul.mk-list .li-yes {
   background-color: #32b33b;
@@ -71,7 +81,7 @@ ul.mk-list li::after {
   display: block;
   position: absolute;
   top: 5px;
-  height: 150px;
+  height: 110px;
   left: 5px;
   right: 5px;
   background-color: rgba(0, 0, 0, 0.5);
@@ -85,28 +95,12 @@ ul.mk-list .status-n::after {
 ul.mk-list .status-u::after {
   background-color: rgba(136, 136, 136, 0.25);
 }
-#mks li {
-  position: relative;
-  display: inline-block;
-  width: 160px;
-  height: 220px;
-  margin: 1em;
-  text-align: center;
-  vertical-align: text-bottom;
-  overflow: hidden;
-}
-#mks li.status-y {
-  background-color: #32b33b;
-}
-#mks li.status-n {
-  background-color: #f62c10;
-}
-#mks li.status-u {
-  background-color: #888888;
-}
 #about p {
   font-size: 16px;
 }
 #final-slogan em {
   color: yellow;
+}
+#emailModal {
+  color: black;
 }

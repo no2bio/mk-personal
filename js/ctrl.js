@@ -26,6 +26,26 @@ function startPage() {
 	loadMKs();
 }
 
+function showMailModal( mkId ) {
+  var mk;
+  for ( var i=0; i<mks.length; i++ ) {
+    if ( mks[i].id===mkId ) {
+      mk = mks[i];
+      break;
+    }
+  }
+
+  $.get( "content/email-" +mk.status + "-" + mk.gender + ".txt")
+    .done( function(data) {
+      $("#emailModalMkName").text(mk.name);
+      $("#emailModalMkNameSmall").text(mk.name);
+      $("#emailModalEmail").html("<a href='mailto:" + mk.email + "'>" + mk.email + "</a>");
+      $("#emailModalMkGender").text(mk.gender==="f" ? "חברת" : "חבר");
+      $("#emailModalContent").html(data);
+      $('#emailModal').modal('show')
+    });
+}
+
 function loadMKs() {
 	d3.csv(spreadsheetUrl,
 		function(d) {
@@ -64,7 +84,6 @@ function updateMkDisplay() {
 		});
 	var mksEnter = mksUpdate.enter()
 		.append("li")
-    .style("display","inline-block")
 		.attr("class", function(mk) {
 			return "status-" + mk.status;
 		})
@@ -93,7 +112,7 @@ function updateMkDisplay() {
 }
 
 function buildMkContent(mk) {
-  return "<img class='mk-image' src='img/mks/" + mk.alias + ".jpg' alt=''" + mk.name + "'/>\n" +
+  return "<img class='mk-image' src='img/mks-small/" + mk.alias + ".jpg' alt=''" + mk.name + "'/>\n" +
           "<div class='mk-name'>" + mk.name + "</div>" +
           "<div class='mk-party'>" + mk.party.name + "</div>" +
           "<div class='mk-contact'>" + buildContacts(mk) + "</div>";
@@ -112,7 +131,7 @@ function buildContacts( mk ) {
       "<i class='fa fa-twitter'></i></a>"
   }
   if ( mk.email && mk.email !== "" ) {
-    retVal = retVal + "<a href='mailto:" + mk.email + "'>" +
+    retVal = retVal + "<a href=\"javascript:showMailModal('" + mk.id + "')\">" +
                   "<i class='fa fa-envelope-o'></i></a>";
   }
   return retVal;
