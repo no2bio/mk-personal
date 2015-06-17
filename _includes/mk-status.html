@@ -19,30 +19,43 @@
                           <option value="yahadut-hatora">יהדות התורה</option>
                       </select>
                       <br />
+                      <br />
                       <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary btn-sm">
+                          <span class="visible-xs-block">&nbsp;</span>
+                          <br class="visible-xs-block" />
                           <input type="radio" name="options" id="option1" onchange="filterBySupport(null)" autocomplete="off">כולם
                           <br class="visible-xs-block" />
                           <span class="visible-xs-block">&nbsp;</span>
                         </label>
                         <label class="btn btn-danger btn-sm">
-                          <input type="radio" name="options" id="btnNo" onchange="filterBySupport('n')" autocomplete="off"> תומכי מאגר
+                          <input type="radio" name="options" id="btnNo" onchange="filterBySupport('n')" autocomplete="off"> תומכי
+                          <br class="visible-xs-block" />
+                           המאגר
                           <br class="visible-xs-block" />
                           <span class="badge" id="noCount">0</span>
                         </label>
                         <label class="btn btn-default btn-sm active">
                           <input type="radio" name="options" id="btnUndecided" onchange="filterBySupport('u')" autocomplete="off" checked>מתלבטים
                           <br class="visible-xs-block" />
+                          <span class="visible-xs-block">&nbsp;</span>
+                          <br class="visible-xs-block" />
                           <span class="badge" id="undecidedCount">0</span>
                         </label>
                         <label class="btn btn-success btn-sm">
-                          <input type="radio" name="options" id="btnYes" onchange="filterBySupport('y')" autocomplete="off"> תומכי ביטול
+                          <input type="radio" name="options" id="btnYes" onchange="filterBySupport('y')" autocomplete="off"> תומכי
+                          <br class="visible-xs-block" />
+                           ביטול
                           <br class="visible-xs-block" />
                           <span class="badge" id="yesCount">0</span>
                         </label>
                       </div>
                     </div>
                     <div>
+                      <div id="noMksFound">
+                        <em>לא נמצאו חברי כנסת העונים לתאור</em>
+                         שנו את הגדרות הסינון על ידי לחיצה על אחד מכפתורי העמדה או בחירת מפלגה אחרת מתפריט המפלגות.
+                      </div>
                       <ul id="mks" class="mk-list">
 
                       </ul>

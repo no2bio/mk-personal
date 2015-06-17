@@ -109,6 +109,12 @@ function updateMkDisplay() {
   $("#noCount").text(counts.n);
   $("#yesCount").text(counts.y);
   $("#undecidedCount").text(counts.u);
+
+  if ( filtered.length === 0 ) {
+    $("#noMksFound").slideDown();
+  } else  {
+    $("#noMksFound").slideUp();
+  }
 }
 
 function buildMkContent(mk) {

@@ -8,5 +8,5 @@
 - [v] כפתור התומכי ביטול נדחק שורה אחת למטה במובייל.
 
 # General
-* Message when there are no MKs to display
+* [v] Message when there are no MKs to display
 * Citeations
