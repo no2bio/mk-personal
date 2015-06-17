@@ -109,6 +109,9 @@ function updateMkDisplay() {
   $("#noCount").text(counts.n);
   $("#yesCount").text(counts.y);
   $("#undecidedCount").text(counts.u);
+  $("#noCountXs").text(counts.n);
+  $("#yesCountXs").text(counts.y);
+  $("#undecidedCountXs").text(counts.u);
 
   if ( filtered.length === 0 ) {
     $("#noMksFound").slideDown();

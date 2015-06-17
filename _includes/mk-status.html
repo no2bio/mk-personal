@@ -20,35 +20,45 @@
                       </select>
                       <br />
                       <br />
-                      <div class="btn-group" data-toggle="buttons">
+                      <div class="btn-group hidden-xs" data-toggle="buttons">
                         <label class="btn btn-primary btn-sm">
-                          <span class="visible-xs-block">&nbsp;</span>
-                          <br class="visible-xs-block" />
                           <input type="radio" name="options" id="option1" onchange="filterBySupport(null)" autocomplete="off">כולם
-                          <br class="visible-xs-block" />
-                          <span class="visible-xs-block">&nbsp;</span>
                         </label>
                         <label class="btn btn-danger btn-sm">
                           <input type="radio" name="options" id="btnNo" onchange="filterBySupport('n')" autocomplete="off"> תומכי
-                          <br class="visible-xs-block" />
                            המאגר
-                          <br class="visible-xs-block" />
                           <span class="badge" id="noCount">0</span>
                         </label>
                         <label class="btn btn-default btn-sm active">
                           <input type="radio" name="options" id="btnUndecided" onchange="filterBySupport('u')" autocomplete="off" checked>מתלבטים
-                          <br class="visible-xs-block" />
-                          <span class="visible-xs-block">&nbsp;</span>
-                          <br class="visible-xs-block" />
                           <span class="badge" id="undecidedCount">0</span>
                         </label>
                         <label class="btn btn-success btn-sm">
                           <input type="radio" name="options" id="btnYes" onchange="filterBySupport('y')" autocomplete="off"> תומכי
-                          <br class="visible-xs-block" />
                            ביטול
-                          <br class="visible-xs-block" />
                           <span class="badge" id="yesCount">0</span>
                         </label>
+                      </div>
+                      <div class="visible-xs">
+                        <div data-toggle="buttons">
+                          <label class="btn btn-primary btn-sm">
+                            <input type="radio" name="options" id="option1" onchange="filterBySupport(null)" autocomplete="off">כולם
+                          </label>
+                          <label class="btn btn-danger btn-sm">
+                            <input type="radio" name="options" id="btnNo" onchange="filterBySupport('n')" autocomplete="off"> תומכי
+                             המאגר
+                            <span class="badge" id="noCountXs">0</span>
+                          </label>
+                          <label class="btn btn-default btn-sm active">
+                            <input type="radio" name="options" id="btnUndecided" onchange="filterBySupport('u')" autocomplete="off" checked>מתלבטים
+                            <span class="badge" id="undecidedCountXs">0</span>
+                          </label>
+                          <label class="btn btn-success btn-sm">
+                            <input type="radio" name="options" id="btnYes" onchange="filterBySupport('y')" autocomplete="off"> תומכי
+                             ביטול
+                            <span class="badge" id="yesCountXs">0</span>
+                          </label>
+                        </div>
                       </div>
                     </div>
                     <div>
