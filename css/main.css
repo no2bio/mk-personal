@@ -16,6 +16,7 @@
 .bio-red {
   color: #d12229;
 }
+#final-slogan em,
 .bio-yellow {
   color: #fee300;
 }
@@ -85,7 +86,7 @@ ul.mk-list li .mk-contact a {
 }
 ul.mk-list li .mk-contact a:hover {
   background-color: black;
-  text-shadow: 0 0 3px yellow;
+  text-shadow: 0 0 3px #fee300;
 }
 ul.mk-list .li-yes {
   background-color: #32b33b;
@@ -118,9 +119,6 @@ ul.mk-list .status-u::after {
 #about p {
   font-size: 16px;
 }
-#final-slogan em {
-  color: yellow;
-}
 #emailModal {
   color: black;
 }
@@ -137,7 +135,7 @@ ul.mk-list .status-u::after {
 #noMksFound em {
   display: block;
   font-size: 2em;
-  color: yellow;
+  color: #fee300;
   font-style: normal;
   font-weight: bold;
 }
