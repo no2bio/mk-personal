@@ -10,6 +10,7 @@ baseurl: /mk-personal
 color:
   primary-dark: '#000000'
   links: '#d12229'
+  links_hover: '#91170a'
 
 # Footer settings
 footer: Your Website
