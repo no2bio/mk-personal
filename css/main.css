@@ -75,9 +75,11 @@ ul.mk-list li .mk-image {
 ul.mk-list li .mk-name {
   text-align: center;
   font-weight: bold;
+  font-size: 80%;
 }
 ul.mk-list li .mk-party {
   font-weight: normal;
+  font-size: 85%;
 }
 ul.mk-list li .mk-contact a {
   color: white;
