@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% assign mkAlias = page.url | split:'/' | last | split :'.' | first %}
+{% for m in site.data.mks %}
+  {% if m.alias == mkAlias %}
+    {% assign mk=m %}
+  {% endif %}
+{% endfor %}
+<html lang="he">
+    {% include head.html title=mk.name %}
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    {% include mk-solo.html mk=mk %}
+    {% include footer.html %}
+    </body>
+</html>

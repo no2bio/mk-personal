@@ -1,0 +1,53 @@
+{% assign mkStatus = include.mk.status | remove:' '%}
+{% if mkStatus == '' %} {% assign mkStatus = 'pending' %} {% endif %}
+  
+{% assign mkGender = include.mk.gender | remove:' '%}
+{% if mkGender == '' %} {% assign mkGender = 'm' %} {% endif %}
+
+ <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-user"></i>
+                    {{ include.mk.name }}
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="hidden">
+                        <a href="#page-top">{{ include.mk.name }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ site.baseurl }}/">
+                            <i class="fa fa-institution"></i>
+                            חזרה
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">{{ include.mk.name }}</h1>
+                        <p class="intro-text">
+                          זה טקסט מהתבנית. למטה יכול להיות מרקדאון של הח"כ<br>
+                          {{ page.content | markdownify }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
