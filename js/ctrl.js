@@ -65,11 +65,48 @@ function loadMKs() {
 		},
 		function(error, rows) {
 			mks = rows;
-			updateMkDisplay();
+			buildMkCards();
+			filterBySupport('u');
 		});
 }
 
+/**
+ * Create the cards for all the MKs.
+ * Later, updateMkDisplay will hide/show as needed.
+ */
+function buildMkCards() {
+	d3.select("#mks").
+		selectAll("li").
+		data(mks, function(mk) {
+			return mk.id;
+		}).
+		enter().
+		append("li").
+		attr("class", function(mk) {
+			return "status-" + mk.status;
+		}).
+		html(buildMkContent);
+}
+
 function updateMkDisplay() {
+	console.log("updating mk display");
+	var mksUpdate = d3.select("#mks")
+		.selectAll("li")
+		.data(mks, function(mk) {
+			return mk.id;
+		}).
+		transition().
+		duration(1000).
+		style("width", function(mk) {
+			return (partyFilter(mk) && supportFilter(mk)) ? "110px" : "0px";
+		}).
+		style("margin-left", function(mk) {
+			return (partyFilter(mk) && supportFilter(mk)) ? "14px" : "0px";
+		}).
+		style("margin-right", function(mk) {
+			return (partyFilter(mk) && supportFilter(mk)) ? "14px" : "0px";
+		});
+
 	var filtered = [];
 	for (var i = 0; i < mks.length; i++) {
 		var mk = mks[i];
@@ -77,25 +114,6 @@ function updateMkDisplay() {
 			filtered.push(mk);
 		}
 	}
-	var mksUpdate = d3.select("#mks")
-		.selectAll("li")
-		.data(filtered, function(mk) {
-			return mk.id;
-		});
-	var mksEnter = mksUpdate.enter()
-		.append("li")
-		.attr("class", function(mk) {
-			return "status-" + mk.status;
-		})
-		.html(buildMkContent);
-
-	var mksExit = mksUpdate.exit()
-		.transition()
-		.duration(1000)
-		.style("width", "0px")
-		.style("opacity", "0")
-    .remove();
-
   counts.y=0;
   counts.n=0;
   counts.u=0;
