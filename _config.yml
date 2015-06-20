@@ -1,8 +1,7 @@
 # Site settings
-title: I don't think this section ever gets used (famous last words).
+title: מוחקים את המאגר הביומטרי
 email: team@no2bio.org
 url: https://no2bio.github.io
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
 
 baseurl: /mk-personal
 
