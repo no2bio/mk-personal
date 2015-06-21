@@ -165,6 +165,33 @@ ul.mk-list .status-u::after {
   .filter-button( @color-undecided );
 }
 
+.btn-act {
+  border: 1px solid white;
+  color: 1px solid white;
+  background-color: #000;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.5);
+  position: absolute;
+  left: 5px;
+  top: 75px;
+  width: auto;
+  height: auto;
+  z-index: 1000;
+  transform: rotate(30deg);
+}
+.btn-act-with-status(@color) {
+  border-color: @color;
+  color: @color;
+  background-color: desaturate(@color, 30%);
+}
+li.status-y .btn-act {
+  .btn-act-with-status(@color-yes);
+}
+li.status-n .btn-act {
+  .btn-act-with-status(@color-no);
+}
+li.status-u .btn-act {
+  .btn-act-with-status(@color-undecided);
+}
 
 #about {
   p {

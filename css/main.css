@@ -171,6 +171,34 @@ ul.mk-list .status-u::after {
   background-color: #888888;
   color: #000;
 }
+.btn-act {
+  border: 1px solid white;
+  color: 1px solid white;
+  background-color: #000;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 5px;
+  top: 75px;
+  width: auto;
+  height: auto;
+  z-index: 1000;
+  transform: rotate(30deg);
+}
+li.status-y .btn-act {
+  border-color: #32b33b;
+  color: #32b33b;
+  background-color: #549159;
+}
+li.status-n .btn-act {
+  border-color: #f62c10;
+  color: #f62c10;
+  background-color: #d14835;
+}
+li.status-u .btn-act {
+  border-color: #888888;
+  color: #888888;
+  background-color: #888888;
+}
 #about p {
   font-size: 16px;
 }
