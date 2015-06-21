@@ -13,13 +13,11 @@
   font-weight: normal;
   font-style: normal;
 }
-#mk-details a:hover,
 #mk-details a:focus,
 .bio-red {
   color: #d12229;
 }
 #final-slogan em,
-#mk-details a,
 .bio-yellow {
   color: #fee300;
 }
@@ -37,6 +35,7 @@
   background-size: cover;
   -o-background-size: cover;
 }
+.intro #mk-details .panel-body { color: black }
 body {
   direction: rtl;
   font-family: Alef, Helvetica, "Arial Hebrew", Arial;
