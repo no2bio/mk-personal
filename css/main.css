@@ -208,6 +208,12 @@ li.status-u .btn-act {
 #emailModal {
   color: black;
 }
+#mk-details {
+  color: black;
+}
+#mk-details ul {
+  list-style-type: none;
+}
 #noMksFound {
   margin-top: 1em;
   padding: 0.5em;
