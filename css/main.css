@@ -13,11 +13,9 @@
   font-weight: normal;
   font-style: normal;
 }
-#mk-details a:focus,
 .bio-red {
   color: #d12229;
 }
-#final-slogan em,
 .bio-yellow {
   color: #fee300;
 }
@@ -35,7 +33,6 @@
   background-size: cover;
   -o-background-size: cover;
 }
-.intro #mk-details .panel-body { color: black }
 body {
   direction: rtl;
   font-family: Alef, Helvetica, "Arial Hebrew", Arial;
@@ -77,11 +74,9 @@ ul.mk-list li .mk-image {
 ul.mk-list li .mk-name {
   text-align: center;
   font-weight: bold;
-  font-size: 80%;
 }
 ul.mk-list li .mk-party {
   font-weight: normal;
-  font-size: 85%;
 }
 ul.mk-list li .mk-contact a {
   color: white;
@@ -90,7 +85,7 @@ ul.mk-list li .mk-contact a {
 }
 ul.mk-list li .mk-contact a:hover {
   background-color: black;
-  text-shadow: 0 0 3px #fee300;
+  text-shadow: 0 0 3px yellow;
 }
 ul.mk-list .li-yes {
   background-color: #32b33b;
@@ -120,8 +115,67 @@ ul.mk-list .status-n::after {
 ul.mk-list .status-u::after {
   background-color: rgba(136, 136, 136, 0.25);
 }
+.btn-all {
+  border: 1px solid #8888ff;
+  background-color: #000;
+  color: #8888ff;
+}
+.btn-all:hover {
+  color: white;
+  background-color: #2d2d54;
+}
+.btn-all.active {
+  border: 1px solid #8888ff;
+  background-color: #8888ff;
+  color: #000;
+}
+.btn-yes {
+  border: 1px solid #32b33b;
+  background-color: #000;
+  color: #32b33b;
+}
+.btn-yes:hover {
+  color: white;
+  background-color: #113b13;
+}
+.btn-yes.active {
+  border: 1px solid #32b33b;
+  background-color: #32b33b;
+  color: #000;
+}
+.btn-no {
+  border: 1px solid #f62c10;
+  background-color: #000;
+  color: #f62c10;
+}
+.btn-no:hover {
+  color: white;
+  background-color: #510f05;
+}
+.btn-no.active {
+  border: 1px solid #f62c10;
+  background-color: #f62c10;
+  color: #000;
+}
+.btn-undecided {
+  border: 1px solid #888888;
+  background-color: #000;
+  color: #888888;
+}
+.btn-undecided:hover {
+  color: white;
+  background-color: #2d2d2d;
+}
+.btn-undecided.active {
+  border: 1px solid #888888;
+  background-color: #888888;
+  color: #000;
+}
 #about p {
   font-size: 16px;
+}
+#final-slogan em {
+  color: yellow;
 }
 #emailModal {
   color: black;
@@ -139,7 +193,7 @@ ul.mk-list .status-u::after {
 #noMksFound em {
   display: block;
   font-size: 2em;
-  color: #fee300;
+  color: yellow;
   font-style: normal;
   font-weight: bold;
 }
@@ -149,4 +203,3 @@ footer .small-print {
   color: #888;
   margin-top: 2em;
 }
-#mk-details ul { list-style-type: none }

@@ -20,9 +20,6 @@ var counts = {};
 var partyList = [];
 
 function startPage() {
-  supportFilter = function(mk) {
-    return mk.status === "u";
-  };
 	loadMKs();
 }
 
@@ -66,7 +63,7 @@ function loadMKs() {
 		function(error, rows) {
 			mks = rows;
 			buildMkCards();
-			filterBySupport('u');
+			updateMkDisplay();
 		});
 }
 
@@ -89,7 +86,6 @@ function buildMkCards() {
 }
 
 function updateMkDisplay() {
-	console.log("updating mk display");
 	var mksUpdate = d3.select("#mks")
 		.selectAll("li")
 		.data(mks, function(mk) {
@@ -124,11 +120,13 @@ function updateMkDisplay() {
     }
   }
 
-  $("#noCount").text(counts.n);
+  $("#allCount").text(counts.y + counts.n + counts.u);
+  $("#allCountXs").text(counts.y + counts.n + counts.u);
   $("#yesCount").text(counts.y);
-  $("#undecidedCount").text(counts.u);
-  $("#noCountXs").text(counts.n);
   $("#yesCountXs").text(counts.y);
+  $("#noCount").text(counts.n);
+  $("#noCountXs").text(counts.n);
+  $("#undecidedCount").text(counts.u);
   $("#undecidedCountXs").text(counts.u);
 
   if ( filtered.length === 0 ) {

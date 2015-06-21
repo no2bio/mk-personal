@@ -133,6 +133,39 @@ ul.mk-list .status-u::after {
 	background-color: fade(@color-undecided, 25%);
 }
 
+.filter-button(@color) {
+  border: 1px solid @color;
+  background-color: #000;
+  color: @color;
+  &:hover {
+    color: white;
+    background-color: mix(@color, #000, 33%);
+  }
+  &.active {
+    border: 1px solid @color;
+    background-color: @color;
+    color: #000;
+  }
+
+}
+
+.btn-all {
+  .filter-button(#88F);
+}
+
+.btn-yes {
+  .filter-button( @color-yes );
+}
+
+.btn-no {
+  .filter-button( @color-no );
+}
+
+.btn-undecided {
+  .filter-button( @color-undecided );
+}
+
+
 #about {
   p {
     font-size: 16px;
