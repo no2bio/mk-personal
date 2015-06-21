@@ -13,10 +13,13 @@
   font-weight: normal;
   font-style: normal;
 }
+#mk-details a:hover,
+#mk-details a:focus,
 .bio-red {
   color: #d12229;
 }
 #final-slogan em,
+#mk-details a,
 .bio-yellow {
   color: #fee300;
 }
@@ -147,3 +150,4 @@ footer .small-print {
   color: #888;
   margin-top: 2em;
 }
+#mk-details ul { list-style-type: none }

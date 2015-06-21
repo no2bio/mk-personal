@@ -143,7 +143,7 @@ function buildMkContent(mk) {
           "<div class='mk-name'>" + mk.name + "</div>" +
           "<div class='mk-party'>" + mk.party.name + "</div>" +
           "<div class='mk-contact'><a class='btn btn-sm " +
-          "btn-primary active" +
+          "btn-default" +
 	  // (mk.status==="y"? "btn-success": mk.status==="n"? "btn-danger": "btn-primary") +
           "' href='mks/" + mk.alias +".html'>" +
 	  (mk.status==="y"? "לתמוך": mk.status==="n"? "למחות": "ללחוץ") +

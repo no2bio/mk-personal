@@ -11,7 +11,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
+                <a class="navbar-brand page-scroll" href="../#mk-status">
                     <i class="fa fa-user"></i>
                     {{ include.mk.name }}
                 </a>
@@ -21,13 +21,7 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
                 <ul class="nav navbar-nav">
                     <li class="hidden">
-                        <a href="#page-top">{{ include.mk.name }}</a>
-                    </li>
-                    <li>
-                        <a href="../#mk-status">
-                            <i class="fa fa-institution"></i>
-                            חזרה
-                        </a>
+                        <a href="../#mk-status">{{ include.mk.name }}</a>
                     </li>
                 </ul>
             </div>
@@ -37,17 +31,24 @@
     </nav>
     <!-- Intro Header -->
     <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">{{ include.mk.name }}</h1>
-                        <p class="intro-text">
-                          זה טקסט מהתבנית. למטה יכול להיות מרקדאון של הח"כ<br>
-                          {{ page.content | markdownify }}
-                        </p>
-                    </div>
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-right" id="mk-details">
+              <div class="media">
+                <div class="media-left">
+                  <a href="../#mk-status">
+                    <img class="media-object" alt="{{ include.mk.name }}"
+                      src="{{ site.baseurl }}/img/mks-small/{{ include.mk.alias }}.jpg">
+                  </a>
                 </div>
+                <div class="media-body">
+                  <h4 class="media-heading">{{ include.mk.name }}</h4>
+                  {{ include.content | markdownify }}
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </header>
