@@ -6,11 +6,12 @@
 {% assign mkGender = mk.gender | remove:' '%}
 {% if mkGender == '' %} {% assign mkGender = 'm' %} {% endif %}
 {% capture mkTitle %}{{ site.data.status[mkGender][mkStatus] }}{% endcapture %}
+{% capture mkAction %}{{ site.data.actions[mkGender][mkStatus] }}{% endcapture %}
+{% capture pageTitle %}{{site.title}} &mdash; ח&quot;כ {{ mk.name }} {{ mkTitle }}{% endcapture %}
 <html lang="he">
-    {% include head.html title=mkTitle %}
-
+    {% include head.html mk=mk title=pageTitle description=mkAction content=content mkStatus=mkStatus mkGender=mkGender %}
     <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-      {% include mk-solo.html mk=mk title=mkTitle content=content mkStatus=mkStatus mkGender=mkGender %}
+      {% include mk-solo.html mk=mk title=mkTitle content=content mkStatus=mkStatus mkGender=mkGender mkAction=mkAction %}
       {% include footer.html %}
     </body>
 </html>

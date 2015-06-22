@@ -1,0 +1,8 @@
+    <div class="btn-group" style="margin:4px" role="group" aria-label="רשתות חברתיות">
+        <a target="_blank"
+          href="https://www.facebook.com/sharer.php?u={{ page.url | replace:'index.html','' | prepend:site.baseurl | prepend:site.url | cgi_escape }}"
+          title="שתפו" class="btn btn-info btn-xs"><i class="fa fa-facebook"></i></a>
+        <a target="_blank"
+          href="https://twitter.com/intent/tweet?text={% if include.tweet %}{{ include.tweet | cgi_escape }}{% else %}{{ site.title | cgi_escape }}{% endif %}+{{ page.url | replace:'index.html','' | prepend:site.baseurl | prepend:site.url | cgi_escape }}+%23No2Bio"
+          title="צייצו" class="btn btn-info btn-xs"><i class="fa fa-twitter"></i></a>
+    </div>

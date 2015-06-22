@@ -2,9 +2,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="{% if include.title %}{{ include.title }}{% else %}{{ site.title }}{% endif %}"/>
+    <meta property="og:type" content="{% if include.ogtype %}{{ include.ogtype }}{% else %}{{ 'cause' }}{% endif %}"/>
+    <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend:site.baseurl | prepend:site.url }}"/>
+    <meta property="og:site_name" content="{{ site.title }}"/>
+    <meta property="og:image" content="{{site.url}}{{site.baseurl}}{% if include.ogimage %}{{ include.ogimage }}{% else %}{{ site.ogimage }}{% endif %}" />
+    <meta property="og:description" content="{% if include.description %}{{ include.description }}{% else %}{{ site.description }}{% endif %}"/>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@{{ site.twitter_username }}" />
+    <meta name="twitter:title" content="{% if include.title %}{{ include.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta name="twitter:description" content="{% if include.description %}{{ include.description }}{% else %}{{ site.description }}{% endif %}" />
+    <meta name="twitter:image" content="{{site.url}}{{site.baseurl}}{% if include.ogimage %}{{ include.ogimage }}{% else %}{{ site.ogimage }}{% endif %}" />
+    <meta name="twitter:url" content="{{ page.url | replace:'index.html','' | prepend:site.baseurl | prepend:site.url }}" />
 
-    <title>{% if include.title %}{{ include.title }}{% else %}{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}{% endif %}</title>
-    <meta name="description" content="{{ site.description }}">
+
+    <title>{% if include.title %}{{ include.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{% if include.description %}{{ include.description }}{% else %}{{ site.description }}{% endif %}">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="icon" type="image/x-icon" href="{{ "/favicon.ico"  | prepend: site.baseurl }}" />
 

@@ -1,18 +1,18 @@
 # Site settings
 title: מוחקים את המאגר הביומטרי
+description: האם נבחרי הציבור ימחקו את המאגר הביומטרי או יפקירו את בטחונך? זה הזמן לשכנע אותם
 email: team@no2bio.org
 url: https://no2bio.github.io
-
 baseurl: /mk-personal
+
+ogimage: /img/poster.jpg
+twitter_username: no2bio
 
 # Color settings (hex-codes without the leading hash-tag)
 color:
   primary-dark: '#000000'
   links: '#d12229'
   links_hover: '#91170a'
-
-# Footer settings
-footer: Your Website
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:

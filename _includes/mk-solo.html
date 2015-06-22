@@ -36,25 +36,31 @@
                       {{ include.content | markdownify }}
                     </div>
                   </div>
-                  <h4>פעולות</h4>
-                  <ul>
-                    {% if include.mk.twitter%}
-                      <li><i class="fa fa-twitter"></i></li>
-                    {% endif %}
-                    {% if include.mk.facebook %}
-                      <li><i class="fa fa-facebook"></i></li>
-                    {% endif %}
-                  </ul>
+                  <h4>
+                    {{ include.mkAction }}
+                    <div class="btn-group" style="margin:4px" role="group" aria-label="רשתות חברתיות">
+                      {% assign escapedUrl = page.url | replace:'index.html','' | prepend:site.baseurl | prepend:site.url | cgi_escape %}
+                      {% if include.mk.twitter%}
+                        {% capture tweetFileName %}tweet-{{mkStatus}}-{{mkGender}}.txt{% endcapture %}
+                        {% capture mkTweet %}{% include {{ tweetFileName }} mk=mk %}{% endcapture %}
+                        <a target="_blank"
+                          href="https://twitter.com/intent/tweet?text={{ mkTweet | strip_newlines | cgi_escape }}+{{ escapedUrl }}+%23No2Bio"
+                          title="צייצו" class="btn btn-default btn-xs"><i class="fa fa-twitter"></i></a>
+                      {% endif %}
+                      {% if include.mk.facebook %}
+                        <a target="_blank"
+                          href="https://www.facebook.com/sharer.php?u={{ escapedUrl }}"
+                          title="שתפו" class="btn btn-default btn-xs"><i class="fa fa-facebook"></i></a>
+                      {% endif %}
+                    </div>
+                  </h4>
                   {% if include.mk.email %}
                     המייל של ח״כ {{include.mk.name}}
                     הוא
                     <a href="mailto:{{include.mk.email}}">{{include.mk.email}}</a>.
                     להלן נוסח מוצע למכתב - אתם מוזמנים להעתיק אותו לתוכנת הדואר שלכם, לערוך אותו, ולשלוח.
                     {% capture emailFileName %}email-{{mkStatus}}-{{mkGender}}.txt{% endcapture %}
-                    <blockqoute>
-                      {% include {{emailFileName}} %}
-                    </blockqoute>
-
+                    <textarea class="form-control" readonly onclick="this.select()" style="cursor:text; height:10em">{% include {{emailFileName}} mk=mk %}</textarea>
                   {% endif %}
                 </div>
               </div>
