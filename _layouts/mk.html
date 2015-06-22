@@ -2,14 +2,15 @@
 {% assign mkAlias = page.url | split:'/' | last | split :'.' | first %}
 {% for m in site.data.mks %}{% if m.alias == mkAlias %}{% assign mk=m %}{% endif %}{% endfor %}
 {% assign mkStatus = mk.status | remove:' '%}
-{% if mkStatus == '' %} {% assign mkStatus = 'pending' %} {% endif %}
+{% if mkStatus == '' %} {% assign mkStatus = 'undecided' %} {% endif %}
 {% assign mkGender = mk.gender | remove:' '%}
 {% if mkGender == '' %} {% assign mkGender = 'm' %} {% endif %}
-{% capture mkTitle %}ח"כ {{ mk.name }} {{ site.data.status[mkGender][mkStatus] }}{% endcapture %}
+{% capture mkTitle %}{{ site.data.status[mkGender][mkStatus] }}{% endcapture %}
 <html lang="he">
     {% include head.html title=mkTitle %}
+
     <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-        {% include mk-solo.html mk=mk title=mkTitle content=content mkstatus=mkStatus mkgender=mkGender %}
-    {% include footer.html %}
+      {% include mk-solo.html mk=mk title=mkTitle content=content mkStatus=mkStatus mkGender=mkGender %}
+      {% include footer.html %}
     </body>
 </html>

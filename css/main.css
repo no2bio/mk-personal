@@ -199,6 +199,15 @@ li.status-u .btn-act {
   color: #888888;
   background-color: #888888;
 }
+.label-yes {
+  background-color: #32b33b;
+}
+.label-no {
+  background-color: #f62c10;
+}
+.label-undecided {
+  background-color: #888888;
+}
 #about p {
   font-size: 16px;
 }
@@ -209,7 +218,7 @@ li.status-u .btn-act {
   color: black;
 }
 #mk-details {
-  color: black;
+  color: #000000;
 }
 #mk-details ul {
   list-style: none;

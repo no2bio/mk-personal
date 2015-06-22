@@ -16,10 +16,11 @@
         <div class="container">
           <div class="row">
             <div class="col-md-8 col-md-offset-2 text-right" id="mk-details">
-              <div class="panel {% if include.mkstatus == 'pending' %}panel-default{% else %}{% if include.mkstatus == 'no' %}panel-danger{% else %}panel-success{% endif %}{% endif %}">
+              <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">
-                    <a href="../#mk-status">{{ include.title }}</a>
+                    ח״כ {{ include.mk.name }}
+                    <a href="../#mk-status"><span class="label label-{{include.mkStatus}}">{{ include.title }}</span></a>
                   </h3>
                 </div>
                 <div class="panel-body">
@@ -35,6 +36,26 @@
                       {{ include.content | markdownify }}
                     </div>
                   </div>
+                  <h4>פעולות</h4>
+                  <ul>
+                    {% if include.mk.twitter%}
+                      <li><i class="fa fa-twitter"></i></li>
+                    {% endif %}
+                    {% if include.mk.facebook %}
+                      <li><i class="fa fa-facebook"></i></li>
+                    {% endif %}
+                  </ul>
+                  {% if include.mk.email %}
+                    המייל של ח״כ {{include.mk.name}}
+                    הוא
+                    <a href="mailto:{{include.mk.email}}">{{include.mk.email}}</a>.
+                    להלן נוסח מוצע למכתב - אתם מוזמנים להעתיק אותו לתוכנת הדואר שלכם, לערוך אותו, ולשלוח.
+                    {% capture emailFileName %}email-{{mkStatus}}-{{mkGender}}.txt{% endcapture %}
+                    <blockqoute>
+                      {% include {{emailFileName}} %}
+                    </blockqoute>
+
+                  {% endif %}
                 </div>
               </div>
             </div>
