@@ -12,7 +12,7 @@
     <meta name="twitter:site" content="@{{ site.twitter_username }}" />
     <meta name="twitter:title" content="{% if include.title %}{{ include.title }}{% else %}{{ site.title }}{% endif %}" />
     <meta name="twitter:description" content="{% if include.description %}{{ include.description }}{% else %}{{ site.description }}{% endif %}" />
-    <meta name="twitter:image" content="{{site.url}}{{site.baseurl}}{% if include.ogimage %}{{ include.ogimage }}{% else %}{{ site.ogimage }}{% endif %}" />
+    <meta name="twitter:image" content="{{site.url}}{{site.baseurl}}{% if include.twimage %}{{ include.twimage }}{% else %}{{ site.twimage }}{% endif %}" />
     <meta name="twitter:url" content="{{ page.url | replace:'index.html','' | prepend:site.baseurl | prepend:site.url }}" />
 
 
