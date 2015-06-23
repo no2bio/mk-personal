@@ -66,26 +66,37 @@ ul.mk-list li.status-n {
 ul.mk-list li.status-u {
   background-color: #888888;
 }
-ul.mk-list li .mk-image {
+ul.mk-list li a.mk-card {
+  display: block;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  color: black;
+}
+ul.mk-list li a.mk-card:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+}
+ul.mk-list li a.mk-card:hover .act-tag {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+ul.mk-list li a.mk-card:hover div.mk-mask {
+  opacity: 0;
+}
+ul.mk-list li a.mk-card .mk-image {
   margin-top: 5px;
   max-width: 150px;
   /* fix megalomanic scans ;) */
 }
-ul.mk-list li .mk-name {
+ul.mk-list li a.mk-card .mk-name {
   text-align: center;
   font-weight: bold;
 }
-ul.mk-list li .mk-party {
+ul.mk-list li a.mk-card .mk-party {
   font-weight: normal;
-}
-ul.mk-list li .mk-contact a {
-  color: white;
-  margin: 2px;
-  padding: 2px;
-}
-ul.mk-list li .mk-contact a:hover {
-  background-color: black;
-  text-shadow: 0 0 3px yellow;
 }
 ul.mk-list .li-yes {
   background-color: #32b33b;
@@ -96,8 +107,7 @@ ul.mk-list .li-no {
 ul.mk-list .li-undecided {
   background-color: #aaa;
 }
-ul.mk-list li::after {
-  content: '';
+ul.mk-list li div.mk-mask {
   display: block;
   position: absolute;
   top: 5px;
@@ -106,13 +116,13 @@ ul.mk-list li::after {
   right: 5px;
   background-color: rgba(0, 0, 0, 0.5);
 }
-ul.mk-list .status-y::after {
+ul.mk-list li.status-y div.mk-mask {
   background-color: rgba(50, 179, 59, 0.25);
 }
-ul.mk-list .status-n::after {
+ul.mk-list li.status-n div.mk-mask {
   background-color: rgba(246, 44, 16, 0.25);
 }
-ul.mk-list .status-u::after {
+ul.mk-list li.status-u div.mk-mask {
   background-color: rgba(136, 136, 136, 0.25);
 }
 .btn-all {
@@ -171,9 +181,9 @@ ul.mk-list .status-u::after {
   background-color: #888888;
   color: #000;
 }
-.btn-act {
+.act-tag {
   border: 1px solid white;
-  color: 1px solid white;
+  color: white;
   background-color: #000;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
   position: absolute;
@@ -181,23 +191,22 @@ ul.mk-list .status-u::after {
   top: 72px;
   width: auto;
   height: auto;
-  z-index: 1000;
   transform: rotate(30deg);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.9em;
 }
-li.status-y .btn-act {
+li.status-y .act-tag {
   border-color: #32b33b;
   color: #32b33b;
-  background-color: #549159;
 }
-li.status-n .btn-act {
+li.status-n .act-tag {
   border-color: #f62c10;
   color: #f62c10;
-  background-color: #d14835;
 }
-li.status-u .btn-act {
+li.status-u .act-tag {
   border-color: #888888;
   color: #888888;
-  background-color: #888888;
 }
 .label-yes {
   background-color: #32b33b;

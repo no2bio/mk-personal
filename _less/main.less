@@ -47,90 +47,103 @@
 @color-no: #f62c10;
 @color-undecided: #888;
 body {
-	direction: rtl;
+  direction: rtl;
   font-family: Alef, Helvetica, "Arial Hebrew", Arial;
 }
 #partySelect {
-	color: black;
-	height: 2em;
+  color: black;
+  height: 2em;
 }
 ul.mk-list {
-	padding: 0;
-	list-style: outside none none;
-	text-align: center;
+  padding: 0;
+  list-style: outside none none;
+  text-align: center;
 }
 ul.mk-list li {
-	position: relative;
-	display: inline-block;
-	width: 110px;
-	height: 170px;
-	margin: 1em;
-	text-align: center;
-	vertical-align: text-bottom;
-	overflow: hidden;
+  position: relative;
+  display: inline-block;
+  width: 110px;
+  height: 170px;
+  margin: 1em;
+  text-align: center;
+  vertical-align: text-bottom;
+  overflow: hidden;
 
-	&.status-y {
-		background-color: @color-yes;
-	}
-	&.status-n {
-		background-color: @color-no;
-	}
-	&.status-u {
-		background-color: @color-undecided;
-	}
-
-	box-shadow: 0 2px 4px rgba(0,0,0,.5);
-	.mk-image {
-		margin-top: 5px;
-		max-width: 150px;
-		/* fix megalomanic scans ;) */
-	}
-	.mk-name {
-		text-align: center;
-		font-weight: bold;
-	}
-  .mk-party {
-    font-weight: normal;
+  &.status-y {
+    background-color: @color-yes;
   }
-	.mk-contact a {
-    color: white;
-    margin: 2px;
-    padding: 2px;
+  &.status-n {
+    background-color: @color-no;
+  }
+  &.status-u {
+    background-color: @color-undecided;
+  }
 
-  	&:hover {
-  		background-color: black;
-      text-shadow: 0 0 3px yellow;
-  	}
-	}
+  box-shadow: 0 2px 4px rgba(0,0,0,.5);
+  a.mk-card {
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    color: black;
+
+    &:hover {
+      color: white;
+      background-color: rgba(0,0,0,0.4);
+      box-shadow: 0 0 4px rgba(255,255,255,0.4);
+      .act-tag {
+        background-color: black;
+        color: white;
+        border-color: white;
+      }
+      div.mk-mask {
+        opacity: 0;
+      }
+    }
+
+    .mk-image {
+      margin-top: 5px;
+      max-width: 150px;
+      /* fix megalomanic scans ;) */
+    }
+    .mk-name {
+      text-align: center;
+      font-weight: bold;
+    }
+    .mk-party {
+      font-weight: normal;
+    }
+  }
 
 }
 ul.mk-list .li-yes {
-	background-color: @color-yes;
+  background-color: @color-yes;
 }
 ul.mk-list .li-no {
-	background-color: @color-no;
+  background-color: @color-no;
 }
 ul.mk-list .li-undecided {
-	background-color: #aaa;
+  background-color: #aaa;
 }
-ul.mk-list li::after {
-	content: '';
-	display: block;
-	position: absolute;
-	top: 5px;
-	height: 100px;
-	left: 5px;
-	right: 5px;
-	background-color: rgba(0,0,0,0.5);
+ul.mk-list li div.mk-mask {
+  display: block;
+  position: absolute;
+  top: 5px;
+  height: 100px;
+  left: 5px;
+  right: 5px;
+  background-color: rgba(0,0,0,0.5);
 }
-ul.mk-list .status-y::after {
-	background-color: fade(@color-yes, 25%);
+
+ul.mk-list li.status-y div.mk-mask {
+  background-color: fade(@color-yes, 25%);
 }
-ul.mk-list .status-n::after {
-	background-color: fade(@color-no, 25%);
+ul.mk-list li.status-n div.mk-mask {
+  background-color: fade(@color-no, 25%);
 }
-ul.mk-list .status-u::after {
-	background-color: fade(@color-undecided, 25%);
+ul.mk-list li.status-u div.mk-mask {
+  background-color: fade(@color-undecided, 25%);
 }
 
 .filter-button(@color) {
@@ -165,9 +178,9 @@ ul.mk-list .status-u::after {
   .filter-button( @color-undecided );
 }
 
-.btn-act {
+.act-tag {
   border: 1px solid white;
-  color: 1px solid white;
+  color: white;
   background-color: #000;
   box-shadow: 0 2px 2px rgba(0,0,0,0.5);
   position: absolute;
@@ -175,22 +188,23 @@ ul.mk-list .status-u::after {
   top: 72px;
   width: auto;
   height: auto;
-  z-index: 1000;
   transform: rotate(30deg);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.9em;
 }
-.btn-act-with-status(@color) {
+.act-tag-with-status(@color) {
   border-color: @color;
   color: @color;
-  background-color: desaturate(@color, 30%);
 }
-li.status-y .btn-act {
-  .btn-act-with-status(@color-yes);
+li.status-y .act-tag {
+  .act-tag-with-status(@color-yes);
 }
-li.status-n .btn-act {
-  .btn-act-with-status(@color-no);
+li.status-n .act-tag {
+  .act-tag-with-status(@color-no);
 }
-li.status-u .btn-act {
-  .btn-act-with-status(@color-undecided);
+li.status-u .act-tag {
+  .act-tag-with-status(@color-undecided);
 }
 
 .label-yes {
