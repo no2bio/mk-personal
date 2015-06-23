@@ -192,6 +192,9 @@ ul.mk-list li.status-u div.mk-mask {
   width: auto;
   height: auto;
   transform: rotate(30deg);
+  -o-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
   border-radius: 5px;
   padding: 5px;
   font-size: 0.9em;
@@ -254,4 +257,12 @@ footer .small-print {
   font-size: 12px;
   color: #888;
   margin-top: 2em;
+}
+#contact-for-update {
+  color: #CCFF66;
+  border: 1px solid #CCFF66;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px auto;
+  width: auto;
 }
