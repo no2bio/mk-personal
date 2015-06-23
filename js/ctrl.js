@@ -23,26 +23,6 @@ function startPage() {
   loadMKs();
 }
 
-function showMailModal( mkId ) {
-  var mk;
-  for ( var i=0; i<mks.length; i++ ) {
-    if ( mks[i].id===mkId ) {
-      mk = mks[i];
-      break;
-    }
-  }
-
-  $.get( "content/email-" +mk.status + "-" + mk.gender + ".txt")
-    .done( function(data) {
-      $("#emailModalMkName").text(mk.name);
-      $("#emailModalMkNameSmall").text(mk.name);
-      $("#emailModalEmail").html("<a href='mailto:" + mk.email + "'>" + mk.email + "</a>");
-      $("#emailModalMkGender").text(mk.gender==="f" ? "חברת" : "חבר");
-      $("#emailModalContent").html(data);
-      $('#emailModal').modal('show')
-    });
-}
-
 function loadMKs() {
   d3.csv(spreadsheetUrl,
     function(d) {
@@ -63,7 +43,13 @@ function loadMKs() {
     function(error, rows) {
       mks = rows;
       buildMkCards();
-      updateMkDisplay();
+      var partyParam = getParameterByName("party");
+      if ( partyParam ) { 
+        filterByParty(partyParam);
+        $("#partySelect").val(partyParam);
+      } else {
+        updateMkDisplay();
+      }
     });
 }
 
@@ -188,4 +174,11 @@ function filterByParty(which) {
   }
   updateMkDisplay();
 
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(window.location.href);
+    return results === null ? false : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
