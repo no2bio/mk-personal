@@ -11,7 +11,7 @@ var spreadsheetUrl = "data/mks.csv";
 var mks;
 
 var pass = function(mk) {
-	return true;
+  return true;
 };
 
 var supportFilter = pass;
@@ -20,7 +20,7 @@ var counts = {};
 var partyList = [];
 
 function startPage() {
-	loadMKs();
+  loadMKs();
 }
 
 function showMailModal( mkId ) {
@@ -44,27 +44,27 @@ function showMailModal( mkId ) {
 }
 
 function loadMKs() {
-	d3.csv(spreadsheetUrl,
-		function(d) {
-			return {
-				id: d.alias,
-				name: d.name,
-				party: parties[d.party],
-				alias: d.alias,
-				gender: d.gender,
-				status: ((d.status === "yes") ? "y" : ((d.status === "no") ? "n" : "u")),
-				facebookPage: d.facebook,
-				facebookNick: d.fbmention,
-				twitterHandle: d.twitter,
-				email: d.email,
-				site: d.web
-			};
-		},
-		function(error, rows) {
-			mks = rows;
-			buildMkCards();
-			updateMkDisplay();
-		});
+  d3.csv(spreadsheetUrl,
+    function(d) {
+      return {
+        id: d.alias,
+        name: d.name,
+        party: parties[d.party],
+        alias: d.alias,
+        gender: d.gender,
+        status: ((d.status === "yes") ? "y" : ((d.status === "no") ? "n" : "u")),
+        facebookPage: d.facebook,
+        facebookNick: d.fbmention,
+        twitterHandle: d.twitter,
+        email: d.email,
+        site: d.web
+      };
+    },
+    function(error, rows) {
+      mks = rows;
+      buildMkCards();
+      updateMkDisplay();
+    });
 }
 
 /**
@@ -72,44 +72,44 @@ function loadMKs() {
  * Later, updateMkDisplay will hide/show as needed.
  */
 function buildMkCards() {
-	d3.select("#mks").
-		selectAll("li").
-		data(mks, function(mk) {
-			return mk.id;
-		}).
-		enter().
-		append("li").
-		attr("class", function(mk) {
-			return "status-" + mk.status;
-		}).
-		html(buildMkContent);
+  d3.select("#mks").
+    selectAll("li").
+    data(mks, function(mk) {
+      return mk.id;
+    }).
+    enter().
+    append("li").
+    attr("class", function(mk) {
+      return "status-" + mk.status;
+    }).
+    html(buildMkContent);
 }
 
 function updateMkDisplay() {
-	var mksUpdate = d3.select("#mks")
-		.selectAll("li")
-		.data(mks, function(mk) {
-			return mk.id;
-		}).
-		transition().
-		duration(1000).
-		style("width", function(mk) {
-			return (partyFilter(mk) && supportFilter(mk)) ? "110px" : "0px";
-		}).
-		style("margin-left", function(mk) {
-			return (partyFilter(mk) && supportFilter(mk)) ? "14px" : "0px";
-		}).
-		style("margin-right", function(mk) {
-			return (partyFilter(mk) && supportFilter(mk)) ? "14px" : "0px";
-		});
+  var mksUpdate = d3.select("#mks")
+    .selectAll("li")
+    .data(mks, function(mk) {
+      return mk.id;
+    }).
+    transition().
+    duration(1000).
+    style("width", function(mk) {
+      return (partyFilter(mk) && supportFilter(mk)) ? "110px" : "0px";
+    }).
+    style("margin-left", function(mk) {
+      return (partyFilter(mk) && supportFilter(mk)) ? "14px" : "0px";
+    }).
+    style("margin-right", function(mk) {
+      return (partyFilter(mk) && supportFilter(mk)) ? "14px" : "0px";
+    });
 
-	var filtered = [];
-	for (var i = 0; i < mks.length; i++) {
-		var mk = mks[i];
-		if (supportFilter(mk) && partyFilter(mk)) {
-			filtered.push(mk);
-		}
-	}
+  var filtered = [];
+  for (var i = 0; i < mks.length; i++) {
+    var mk = mks[i];
+    if (supportFilter(mk) && partyFilter(mk)) {
+      filtered.push(mk);
+    }
+  }
   counts.y=0;
   counts.n=0;
   counts.u=0;
@@ -137,14 +137,15 @@ function updateMkDisplay() {
 }
 
 function buildMkContent(mk) {
-  return "<img class='mk-image' src='img/mks-small/" + mk.alias + ".jpg' alt=''" + mk.name + "'/>\n" +
+  return "<a class='mk-card' id='" + mk.alias + "' name='" + mk.alias + "' href='mks/" + mk.alias + ".html'>" + 
+          "<img class='mk-image' src='img/mks-small/" + mk.alias + ".jpg' alt=''" + mk.name + "'/>\n" +
+          "<div class='mk-mask'>&nbsp;</div>" +
           "<div class='mk-name'>" + mk.name + "</div>" +
           "<div class='mk-party'>" + mk.party.name + "</div>" +
-          "<div class='mk-contact'><a class='btn btn-act" +
-	  // (mk.status==="y"? "btn-success": mk.status==="n"? "btn-danger": "btn-primary") +
-          "' href='mks/" + mk.alias +".html'><strong>" +
-	  (mk.status==="y"? "לתמוך": mk.status==="n"? "למחות": "ללחוץ") +
-          "</strong></a></div>";
+          "<div class='act-tag'>" +
+            (mk.status==="y"? "לתמוך": mk.status==="n"? "למחות": "ללחוץ") +
+          "</div>" +
+          "</a>";
 }
 
 function buildContacts( mk ) {
@@ -167,24 +168,24 @@ function buildContacts( mk ) {
 }
 
 function filterBySupport(what) {
-	if (what === null) {
-		supportFilter = pass;
-	} else {
-		supportFilter = function(mk) {
-			return mk.status === what;
-		};
-	}
+  if (what === null) {
+    supportFilter = pass;
+  } else {
+    supportFilter = function(mk) {
+      return mk.status === what;
+    };
+  }
   updateMkDisplay();
 }
 
 function filterByParty(which) {
-	if (which === "all") {
-		partyFilter = pass;
-	} else {
-		partyFilter = function(mk) {
-			return mk.party.alias === which;
-		};
-	}
-	updateMkDisplay();
+  if (which === "all") {
+    partyFilter = pass;
+  } else {
+    partyFilter = function(mk) {
+      return mk.party.alias === which;
+    };
+  }
+  updateMkDisplay();
 
 }
