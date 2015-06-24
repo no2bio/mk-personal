@@ -1,4 +1,6 @@
 ---
 layout: mk
 ---
-* <i class="fa fa-newspaper-o"></i> [עמדת המפלגה](https://archive.today/gjQpX#selection-2763.2-2763.176)
+
+* <i class="fa fa-twitter"></i> [הצביע](https://twitter.com/No2Bio/status/613734973418438656) נגד הארכת הפיילוט הביומטרי ב-9 חודשים בועדה הביומטרית בכנסת
+* <i class="fa fa-facebook"></i> "[אם מבקר המדינה אומר שיש כשלים במאגר, אז שר הפנים מבקש להכניס עוד 300 אלף לכשל הזה. אני לא יכול הצביע בעד זה](https://www.facebook.com/no2bio/photos/a.10151352191482277.486584.145718597276/10153422139352277/?type=1)"
