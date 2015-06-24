@@ -17,6 +17,7 @@ var supportFilter = pass;
 var groupFilter = pass;
 var counts = {};
 var partyList = [];
+var filterBySupportValue = null;
 
 function startPage() {
   loadMKs();
@@ -58,8 +59,13 @@ function loadMKs() {
       buildMkCards();
       var partyParam = getParameterByName("party");
       if ( partyParam ) {
-        $("#groupSelect").val("p_" + partyParam);
-        filterByGroup( "p_" + partyParam);
+        if ( partyParam.indexOf("c_") == 0 ) {
+          $("#groupSelect").val(partyParam);
+          filterByGroup(partyParam);
+        } else {
+          $("#groupSelect").val("p_" + partyParam);
+          filterByGroup( "p_" + partyParam);
+        }
       } else {
         updateMkDisplay();
       }
@@ -137,9 +143,15 @@ function updateMkDisplay() {
   }
 
   // updating filterlink
+  var paramSection = "";
   var groupFilterValue = $("groupSelect").val();
-  var supportFilterValue = "all";
-  $("#filter-permalink").attr("href", window.location + "?" + groupFilterValue + "&" + supportFilterValue + "#mk-status");
+  if ( groupFilterValue !== "p_all" ) {
+    paramSection = "group=" + groupFilterValue;
+  } 
+  if ( filterBySupportValue ) {
+    paramSection = paramSection + ((paramSection.length>0 ? "&" : "" )) + filterBySupportValue;
+  }
+  $("#filter-permalink").attr("href", window.location + "?" + paramSection + "#mk-status");
 }
 
 function buildMkContent(mk) {
@@ -174,6 +186,7 @@ function buildContacts( mk ) {
 }
 
 function filterBySupport(what) {
+  filterBySupportValue = what;
   if (what === null) {
     supportFilter = pass;
   } else {
