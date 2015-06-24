@@ -6,26 +6,30 @@
                     <h2>
                       ללחוץ על ח"כ
                       <div><small>
-                          <span class="label label-default"><i class="fa fa-info-circle"></i>  ניתן לסנן לפי מפלגה ועמדה</span>
+                          <span class="label label-default"><i class="fa fa-info-circle"></i>  ניתן לסנן לפי מפלגה/וודעה ועמדה</span>
                         </small></div>
                     </h2>
                     <div>
-                      <select id="partySelect" onchange="filterByParty( this.value )" autocomplete="off">
-                          <option id="all" value="all">כל המפלגות</option>
-                          <option value="likud"> הליכוד</option>
-                          <option value="hamahane-hazioni"> המחנה הציוני</option>
-                          <option value="habait-hayehudi"> הבית היהודי</option>
-                          <option value="yeshatid"> יש עתיד</option>
-                          <option value="yisrael-beitenu"> ישראל ביתנו</option>
-                          <option value="kulanu"> כולנו</option>
-                          <option value="meretz"> מרצ</option>
-                          <option value="reshima-aravit"> הרשימה המשותפת</option>
-                          <option value="shas">ש"ס</option>
-                          <option value="yahadut-hatora">יהדות התורה</option>
-                          <option value="_vaadat_huka">[ועדת החוקה]</option>
-                          <option value="_vaadat_pnim">[ועדת הפנים]</option>
-                          <option value="_vaadat_mada">[ועדת המדע]</option>
-                          <option value="_vaada_meshutefet">[הועדה המשותפת]</option>
+                      <select id="partySelect" onchange="filterByGroup( this.value )" autocomplete="off">
+                          <optgroup label="מפלגות">
+                            <option id="all" value="p_all">כל המפלגות</option>
+                            <option value="p_likud"> הליכוד</option>
+                            <option value="p_hamahane-hazioni"> המחנה הציוני</option>
+                            <option value="p_habait-hayehudi"> הבית היהודי</option>
+                            <option value="p_yeshatid"> יש עתיד</option>
+                            <option value="p_yisrael-beitenu"> ישראל ביתנו</option>
+                            <option value="p_kulanu"> כולנו</option>
+                            <option value="p_meretz"> מרצ</option>
+                            <option value="p_reshima-aravit"> הרשימה המשותפת</option>
+                            <option value="p_shas">ש"ס</option>
+                            <option value="p_yahadut-hatora">יהדות התורה</option>
+                          </optgroup>
+                          <optgroup label="וועדות">
+                            <option value="c_all">הועדה המשותפת</option>
+                            <option value="c_huka">ועדת החוקה</option>
+                            <option value="c_pnim">ועדת הפנים</option>
+                            <option value="c_mada">ועדת המדע</option>
+                          </optgroup>
                       </select>
                       <br />
                       <br />

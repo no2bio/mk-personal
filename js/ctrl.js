@@ -5,7 +5,6 @@
 var spreadsheetUrl = "data/mks.csv";
 
 /**
- *
  * @type array of MK objects (defined from CSV headers).
  */
 var mks;
@@ -23,6 +22,19 @@ function startPage() {
   loadMKs();
 }
 
+function parseCommittees( cmtString ) {
+  var retVal = [];
+  if ( cmtString ) {
+    var comps = cmtString.split(" ");
+    for ( var i=0; i<comps.length; i++ ) {
+      if ( comps[i].length > 0 ) {
+        retVal.push( comps[i] );
+      }
+    }
+  }
+  return retVal;
+}
+
 function loadMKs() {
   d3.csv(spreadsheetUrl,
     function(d) {
@@ -30,7 +42,7 @@ function loadMKs() {
         id: d.alias,
         name: d.name,
         party: parties[d.party],
-        vaadot: d.vaadot||'',
+        committees: parseCommittees(d.committees),
         alias: d.alias,
         gender: d.gender,
         status: ((d.status === "yes") ? "y" : ((d.status === "no") ? "n" : "u")),
@@ -46,8 +58,8 @@ function loadMKs() {
       buildMkCards();
       var partyParam = getParameterByName("party");
       if ( partyParam ) { 
-        filterByParty(partyParam);
-        $("#partySelect").val(partyParam);
+        filterByGroup( "p_" + partyParam);
+        $("#partySelect").val("p_" + partyParam);
       } else {
         updateMkDisplay();
       }
@@ -165,21 +177,37 @@ function filterBySupport(what) {
   updateMkDisplay();
 }
 
-function filterByParty(which) {
-  if (which === "all") {
-    partyFilter = pass;
+function filterByGroup(which) {
+  var comps = which.split("_");
+  if ( comps[0]=="c" ) {
+    filterByCommitee( comps[1] );
   } else {
-    partyFilter = function(mk) {
-      if (which[0] === '_') {
-          console.log(JSON.stringify([mk.alias,mk.vaadot]))
-          return mk.vaadot.search(which)>=0;
-      } else {
-          return mk.party.alias === which;
-      }
-    };
+    filterByParty( comps[1] );
   }
   updateMkDisplay();
+}
 
+function filterByCommitee( committeeId ) {
+  console.log( "filtering by commitee " + committeeId );
+  if (committeeId == "all" ) {
+    partyFilter = function(mk) {
+      console.log( mk.id + ": " + mk.commitees );
+      return (mk.committees.length > 0);
+    };
+  } else {
+    partyFilter = function(mk) {
+      for ( var i=0; i<mk.committees.length; i++ ) {
+        if ( committeeId === mk.committees[i] ) {
+          return true;
+        }
+      }
+      return false;
+    };
+  }
+}
+
+function filterByParty( partyId ) {
+  partyFilter = (partyId==="all") ? pass : function(mk) { return mk.party.alias === partyId; };
 }
 
 function getParameterByName(name) {
