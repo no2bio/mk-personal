@@ -18,7 +18,8 @@ var groupFilter = pass;
 var counts = {};
 var partyList = [];
 var filterBySupportValue = null;
-
+var blockMkUpdates = false;
+var expandSupport = { u: "Undecided", y:"Yes", n:"No" };
 function startPage() {
   loadMKs();
 }
@@ -57,18 +58,33 @@ function loadMKs() {
     function(error, rows) {
       mks = rows;
       buildMkCards();
+      blockMkUpdates = true;
       var partyParam = getParameterByName("party");
       if ( partyParam ) {
         if ( partyParam.indexOf("c_") == 0 ) {
-          $("#groupSelect").val(partyParam);
           filterByGroup(partyParam);
+          $("#groupSelect").val(partyParam);
         } else {
-          $("#groupSelect").val("p_" + partyParam);
           filterByGroup( "p_" + partyParam);
+          $("#groupSelect").val("p_" + partyParam);
         }
       } else {
-        updateMkDisplay();
+        var groupParam = getParameterByName("group");
+        if ( groupParam ) {
+          filterByGroup( groupParam );
+          $("#groupSelect").val(groupParam);
+        }
+        var supportParam = getParameterByName("support");
+        if ( supportParam ) {
+          filterBySupport( supportParam );
+          var selectButton = expandSupport[supportParam];
+          var labelId = "#btn" + selectButton + "Label";
+          $(labelId).button("toggle");
+          $( labelId +"Xs").button("toggle");
+        }
       }
+      blockMkUpdates = false;
+      updateMkDisplay();
     });
 }
 
@@ -91,6 +107,7 @@ function buildMkCards() {
 }
 
 function updateMkDisplay() {
+  if ( blockMkUpdates ) return;
   // MK card animation
   var mksUpdate = d3.select("#mks")
     .selectAll("li")
@@ -144,14 +161,14 @@ function updateMkDisplay() {
 
   // updating filterlink
   var paramSection = "";
-  var groupFilterValue = $("groupSelect").val();
+  var groupFilterValue = $("#groupSelect").val();
   if ( groupFilterValue !== "p_all" ) {
     paramSection = "group=" + groupFilterValue;
   } 
   if ( filterBySupportValue ) {
-    paramSection = paramSection + ((paramSection.length>0 ? "&" : "" )) + filterBySupportValue;
+    paramSection = paramSection + ((paramSection.length>0 ? "&" : "" )) + "support=" + filterBySupportValue;
   }
-  $("#filter-permalink").attr("href", window.location + "?" + paramSection + "#mk-status");
+  $("#filter-permalink").attr("href", window.location.href.split("?")[0] + "?" + paramSection + "#mk-status");
 }
 
 function buildMkContent(mk) {
@@ -166,25 +183,6 @@ function buildMkContent(mk) {
           "</a>";
 }
 
-function buildContacts( mk ) {
-  var retVal = "";
-  if ( mk.facebookPage && mk.facebookPage !== "" ) {
-    retVal = retVal + "<a href='" + mk.facebookPage + "' target='_blank'>" +
-                  "<i class='fa fa-facebook'></i></a>"
-  }
-  if ( mk.twitterHandle && mk.twitterHandle !== "" ) {
-    retVal = retVal +
-      "<a href='https://twitter.com/intent/tweet?url=http%3A%2F%2Fexperiment-end.no2bio.org&via=no2bio&text=" +
-      tweets[mk.gender][mk.status] + "' target='_blank'>" +
-      "<i class='fa fa-twitter'></i></a>"
-  }
-  if ( mk.email && mk.email !== "" ) {
-    retVal = retVal + "<a href=\"javascript:showMailModal('" + mk.id + "')\">" +
-                  "<i class='fa fa-envelope-o'></i></a>";
-  }
-  return retVal;
-}
-
 function filterBySupport(what) {
   filterBySupportValue = what;
   if (what === null) {
@@ -194,7 +192,6 @@ function filterBySupport(what) {
       return mk.status === what;
     };
   }
-  updateMkDisplay();
 }
 
 function filterByGroup(which) {
@@ -204,14 +201,11 @@ function filterByGroup(which) {
   } else {
     filterByParty( comps[1] );
   }
-  updateMkDisplay();
 }
 
 function filterByCommitee( committeeId ) {
-  console.log( "filtering by commitee " + committeeId );
   if (committeeId == "all" ) {
     groupFilter = function(mk) {
-      console.log( mk.id + ": " + mk.commitees );
       return (mk.committees.length > 0);
     };
   } else {

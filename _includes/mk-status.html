@@ -10,7 +10,7 @@
                         </small></div>
                     </h2>
                     <div>
-                      <select id="groupSelect" onchange="filterByGroup( this.value )" autocomplete="off">
+                      <select id="groupSelect" onchange="filterByGroup( this.value ); updateMkDisplay();" autocomplete="off">
                           <optgroup label="מפלגות">
                             <option id="all" value="p_all">כל המפלגות</option>
                             <option value="p_likud"> הליכוד</option>
@@ -34,42 +34,42 @@
                       <br />
                       <br />
                       <div class="btn-group hidden-xs" data-toggle="buttons">
-                        <label class="btn btn-all btn-sm active">
-                          <input type="radio" name="options" id="option1" onchange="filterBySupport(null)" autocomplete="off">כולם
+                        <label class="btn btn-all btn-sm active" id="btnAllLabel">
+                          <input type="radio" name="options" id="btnAll" onchange="filterBySupport(null);  updateMkDisplay();" autocomplete="off">כולם
                           <span class="badge" id="allCount">0</span>
                         </label>
-                        <label class="btn btn-no btn-sm">
-                          <input type="radio" name="options" id="btnNo" onchange="filterBySupport('n')" autocomplete="off">
+                        <label class="btn btn-no btn-sm" id="btnNoLabel">
+                          <input type="radio" name="options" id="btnNo" onchange="filterBySupport('n');  updateMkDisplay();" autocomplete="off">
                            מתעלמים מסכנות המאגר
                           <span class="badge" id="noCount">0</span>
                         </label>
-                        <label class="btn btn-undecided btn-sm">
-                          <input type="radio" name="options" id="btnUndecided" onchange="filterBySupport('u')" autocomplete="off" checked>מתלבטים
+                        <label class="btn btn-undecided btn-sm" id="btnUndecidedLabel">
+                          <input type="radio" name="options" id="btnUndecided" onchange="filterBySupport('u');  updateMkDisplay();" autocomplete="off" checked>מתלבטים
                           <span class="badge" id="undecidedCount">0</span>
                         </label>
-                        <label class="btn btn-yes btn-sm">
-                          <input type="radio" name="options" id="btnYes" onchange="filterBySupport('y')" autocomplete="off">
+                        <label class="btn btn-yes btn-sm" id="btnYesLabel">
+                          <input type="radio" name="options" id="btnYes" onchange="filterBySupport('y');  updateMkDisplay();" autocomplete="off">
                           ימחקו את המאגר
                           <span class="badge" id="yesCount">0</span>
                         </label>
                       </div>
                       <div class="visible-xs">
                         <div class="row" data-toggle="buttons">
-                          <label class="btn btn-all btn-block btn-sm active">
-                            <input type="radio" name="options" id="option1" onchange="filterBySupport(null)" autocomplete="off">כולם
+                          <label class="btn btn-all btn-block btn-sm active" id="btnAllLabelXs">
+                            <input type="radio" name="options" id="btnAllXs" onchange="filterBySupport(null);  updateMkDisplay();" autocomplete="off">כולם
                             <span class="badge" id="allCountXs">0</span>
                           </label>
-                          <label class="btn btn-no btn-block btn-sm">
-                            <input type="radio" name="options" id="btnNo" onchange="filterBySupport('n')" autocomplete="off"> תומכי
+                          <label class="btn btn-no btn-block btn-sm" id="btnNoLabelXs">
+                            <input type="radio" name="options" id="btnNoXs" onchange="filterBySupport('n');  updateMkDisplay();" autocomplete="off"> תומכי
                              המאגר
                             <span class="badge" id="noCountXs">0</span>
                           </label>
-                          <label class="btn btn-undecided btn-block btn-sm">
-                            <input type="radio" name="options" id="btnUndecided" onchange="filterBySupport('u')" autocomplete="off" checked>מתלבטים
+                          <label class="btn btn-undecided btn-block btn-sm" id="btnUndecidedLabelXs">
+                            <input type="radio" name="options" id="btnUndecidedXs" onchange="filterBySupport('u');  updateMkDisplay();" autocomplete="off" checked>מתלבטים
                             <span class="badge" id="undecidedCountXs">0</span>
                           </label>
-                          <label class="btn btn-yes btn-block btn-sm">
-                            <input type="radio" name="options" id="btnYes" onchange="filterBySupport('y')" autocomplete="off"> תומכי
+                          <label class="btn btn-yes btn-block btn-sm" id="btnYesLabelXs">
+                            <input type="radio" name="options" id="btnYesXs" onchange="filterBySupport('y');  updateMkDisplay();" autocomplete="off"> תומכי
                              ביטול
                             <span class="badge" id="yesCountXs">0</span>
                           </label>
@@ -95,7 +95,7 @@
                       </ul>
                     </div>
                     <div>
-                      <small><a href="/" id="filter-permalink"></a></small>
+                      <small><a href="/" id="filter-permalink">לינק לסינון נוכחי</a></small>
                     </div>
                 </div>
             </div>
