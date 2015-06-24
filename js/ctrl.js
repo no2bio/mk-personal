@@ -61,6 +61,8 @@ function loadMKs() {
       blockMkUpdates = true;
       var partyParam = getParameterByName("party");
       if ( partyParam ) {
+        if ( partyParam[0] === '_' ) // legacy kludge
+          partyParam = 'c_all';
         if ( partyParam.indexOf("c_") == 0 ) {
           filterByGroup(partyParam);
           $("#groupSelect").val(partyParam);
