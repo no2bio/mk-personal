@@ -1,4 +1,8 @@
 var parties = {
+	"_vaadat_huka": {
+		"name": "[ועדת חוקה]",
+		"status": "pending"
+	},
 	"likud": {
 		"name": "הליכוד",
 		"web": "https://likud.org.il",

@@ -30,6 +30,7 @@ function loadMKs() {
         id: d.alias,
         name: d.name,
         party: parties[d.party],
+        vaadot: d.vaadot||'',
         alias: d.alias,
         gender: d.gender,
         status: ((d.status === "yes") ? "y" : ((d.status === "no") ? "n" : "u")),
@@ -169,7 +170,12 @@ function filterByParty(which) {
     partyFilter = pass;
   } else {
     partyFilter = function(mk) {
-      return mk.party.alias === which;
+      if (which[0] === '_') {
+          console.log(JSON.stringify([mk.alias,mk.vaadot]))
+          return mk.vaadot.search(which)>=0;
+      } else {
+          return mk.party.alias === which;
+      }
     };
   }
   updateMkDisplay();
