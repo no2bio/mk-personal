@@ -14,7 +14,7 @@ var pass = function(mk) {
 };
 
 var supportFilter = pass;
-var partyFilter = pass;
+var groupFilter = pass;
 var counts = {};
 var partyList = [];
 
@@ -57,9 +57,9 @@ function loadMKs() {
       mks = rows;
       buildMkCards();
       var partyParam = getParameterByName("party");
-      if ( partyParam ) { 
+      if ( partyParam ) {
+        $("#groupSelect").val("p_" + partyParam);
         filterByGroup( "p_" + partyParam);
-        $("#partySelect").val("p_" + partyParam);
       } else {
         updateMkDisplay();
       }
@@ -85,6 +85,7 @@ function buildMkCards() {
 }
 
 function updateMkDisplay() {
+  // MK card animation
   var mksUpdate = d3.select("#mks")
     .selectAll("li")
     .data(mks, function(mk) {
@@ -93,19 +94,20 @@ function updateMkDisplay() {
     transition().
     duration(1000).
     style("width", function(mk) {
-      return (partyFilter(mk) && supportFilter(mk)) ? "110px" : "0px";
+      return (groupFilter(mk) && supportFilter(mk)) ? "110px" : "0px";
     }).
     style("margin-left", function(mk) {
-      return (partyFilter(mk) && supportFilter(mk)) ? "14px" : "0px";
+      return (groupFilter(mk) && supportFilter(mk)) ? "14px" : "0px";
     }).
     style("margin-right", function(mk) {
-      return (partyFilter(mk) && supportFilter(mk)) ? "14px" : "0px";
+      return (groupFilter(mk) && supportFilter(mk)) ? "14px" : "0px";
     });
 
+  // updating counts.
   var filtered = [];
   for (var i = 0; i < mks.length; i++) {
     var mk = mks[i];
-    if (supportFilter(mk) && partyFilter(mk)) {
+    if (supportFilter(mk) && groupFilter(mk)) {
       filtered.push(mk);
     }
   }
@@ -114,7 +116,7 @@ function updateMkDisplay() {
   counts.u=0;
   for ( var i=0; i<mks.length; i++ ) {
     var mk = mks[i];
-    if ( partyFilter(mk) ) {
+    if ( groupFilter(mk) ) {
       counts[mk.status] = counts[mk.status]+1;
     }
   }
@@ -133,6 +135,11 @@ function updateMkDisplay() {
   } else  {
     $("#noMksFound").slideUp();
   }
+
+  // updating filterlink
+  var groupFilterValue = $("groupSelect").val();
+  var supportFilterValue = "all";
+  $("#filter-permalink").attr("href", window.location + "?" + groupFilterValue + "&" + supportFilterValue + "#mk-status");
 }
 
 function buildMkContent(mk) {
@@ -190,12 +197,12 @@ function filterByGroup(which) {
 function filterByCommitee( committeeId ) {
   console.log( "filtering by commitee " + committeeId );
   if (committeeId == "all" ) {
-    partyFilter = function(mk) {
+    groupFilter = function(mk) {
       console.log( mk.id + ": " + mk.commitees );
       return (mk.committees.length > 0);
     };
   } else {
-    partyFilter = function(mk) {
+    groupFilter = function(mk) {
       for ( var i=0; i<mk.committees.length; i++ ) {
         if ( committeeId === mk.committees[i] ) {
           return true;
@@ -207,7 +214,7 @@ function filterByCommitee( committeeId ) {
 }
 
 function filterByParty( partyId ) {
-  partyFilter = (partyId==="all") ? pass : function(mk) { return mk.party.alias === partyId; };
+  groupFilter = (partyId==="all") ? pass : function(mk) { return mk.party.alias === partyId; };
 }
 
 function getParameterByName(name) {
