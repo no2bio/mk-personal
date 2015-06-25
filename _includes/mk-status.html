@@ -5,78 +5,91 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>
                       ללחוץ על ח"כ
-                      <div><small>
-                          <span class="label label-default"><i class="fa fa-info-circle"></i>  ניתן לסנן לפי מפלגה או וועדה, ועמדה</span>
-                        </small></div>
                     </h2>
-                    <div>
-                      <select id="groupSelect" style="color:black" onchange="filterByGroup( this.value ); updateMkDisplay();" autocomplete="off">
-                          <option id="all" value="p_all">כל חברי הכנסת</option>
-                          <optgroup label="מפלגות">
-                            <option value="p_likud"> הליכוד</option>
-                            <option value="p_hamahane-hazioni"> המחנה הציוני</option>
-                            <option value="p_habait-hayehudi"> הבית היהודי</option>
-                            <option value="p_yeshatid"> יש עתיד</option>
-                            <option value="p_yisrael-beitenu"> ישראל ביתנו</option>
-                            <option value="p_kulanu"> כולנו</option>
-                            <option value="p_meretz"> מרצ</option>
-                            <option value="p_reshima-aravit"> הרשימה המשותפת</option>
-                            <option value="p_shas">ש"ס</option>
-                            <option value="p_yahadut-hatora">יהדות התורה</option>
-                          </optgroup>
-                          <optgroup label="וועדות">
-                            <option value="c_all">הועדה המשותפת</option>
-                            <option value="c_huka">ועדת החוקה</option>
-                            <option value="c_pnim">ועדת הפנים</option>
-                            <option value="c_mada">ועדת המדע</option>
-                            <option value="c_security">תת-וועדת בטחון</option>
-                          </optgroup>
-                      </select>
-                      <br />
-                      <br />
-                      <div class="btn-group hidden-xs" data-toggle="buttons">
-                        <label class="btn btn-all btn-sm active" id="btnAllLabel">
-                          <input type="radio" name="options" id="btnAll" onchange="filterBySupport(null);  updateMkDisplay();" autocomplete="off">כולם
-                          <span class="badge" id="allCount">0</span>
-                        </label>
-                        <label class="btn btn-no btn-sm" id="btnNoLabel">
-                          <input type="radio" name="options" id="btnNo" onchange="filterBySupport('n');  updateMkDisplay();" autocomplete="off">
-                           מתעלמים מסכנות המאגר
-                          <span class="badge" id="noCount">0</span>
-                        </label>
-                        <label class="btn btn-undecided btn-sm" id="btnUndecidedLabel">
-                          <input type="radio" name="options" id="btnUndecided" onchange="filterBySupport('u');  updateMkDisplay();" autocomplete="off" checked>מתלבטים
-                          <span class="badge" id="undecidedCount">0</span>
-                        </label>
-                        <label class="btn btn-yes btn-sm" id="btnYesLabel">
-                          <input type="radio" name="options" id="btnYes" onchange="filterBySupport('y');  updateMkDisplay();" autocomplete="off">
-                          ימחקו את המאגר
-                          <span class="badge" id="yesCount">0</span>
-                        </label>
-                      </div>
-                      <div class="visible-xs">
-                        <div class="row" data-toggle="buttons">
-                          <label class="btn btn-all btn-block btn-sm active" id="btnAllLabelXs">
-                            <input type="radio" name="options" id="btnAllXs" onchange="filterBySupport(null);  updateMkDisplay();" autocomplete="off">כולם
-                            <span class="badge" id="allCountXs">0</span>
-                          </label>
-                          <label class="btn btn-no btn-block btn-sm" id="btnNoLabelXs">
-                            <input type="radio" name="options" id="btnNoXs" onchange="filterBySupport('n');  updateMkDisplay();" autocomplete="off"> תומכי
-                             המאגר
-                            <span class="badge" id="noCountXs">0</span>
-                          </label>
-                          <label class="btn btn-undecided btn-block btn-sm" id="btnUndecidedLabelXs">
-                            <input type="radio" name="options" id="btnUndecidedXs" onchange="filterBySupport('u');  updateMkDisplay();" autocomplete="off" checked>מתלבטים
-                            <span class="badge" id="undecidedCountXs">0</span>
-                          </label>
-                          <label class="btn btn-yes btn-block btn-sm" id="btnYesLabelXs">
-                            <input type="radio" name="options" id="btnYesXs" onchange="filterBySupport('y');  updateMkDisplay();" autocomplete="off"> תומכי
-                             ביטול
-                            <span class="badge" id="yesCountXs">0</span>
-                          </label>
+                    <div class="panel panel-default">
+                      <div class="panel-heading text-right">
+                        <div class="pull-left">
+                          <small>
+                            <a href="/" class="btn btn-xs btn-default" id="filter-permalink">
+                              <i class="fa fa-link"></i>
+                              קישור קבוע לסינון נוכחי
+                            </a>
+                          </small>
                         </div>
+                        <h3 class="panel-title">
+                          סינון לפי מפלגה או וועדה, ועמדה
+                        </h3>
                       </div>
-                    </div>
+                      <div class="panel-body">
+                        <select id="groupSelect" class="form-control"
+                            style="color:black" onchange="filterByGroup( this.value ); updateMkDisplay();" autocomplete="off">
+                            <option id="all" value="p_all">כל חברי הכנסת</option>
+                            <optgroup label="מפלגות">
+                              <option value="p_likud"> הליכוד</option>
+                              <option value="p_hamahane-hazioni"> המחנה הציוני</option>
+                              <option value="p_habait-hayehudi"> הבית היהודי</option>
+                              <option value="p_yeshatid"> יש עתיד</option>
+                              <option value="p_yisrael-beitenu"> ישראל ביתנו</option>
+                              <option value="p_kulanu"> כולנו</option>
+                              <option value="p_meretz"> מרצ</option>
+                              <option value="p_reshima-aravit"> הרשימה המשותפת</option>
+                              <option value="p_shas">ש"ס</option>
+                              <option value="p_yahadut-hatora">יהדות התורה</option>
+                            </optgroup>
+                            <optgroup label="וועדות">
+                              <option value="c_all">הועדה המשותפת</option>
+                              <option value="c_huka">ועדת החוקה</option>
+                              <option value="c_pnim">ועדת הפנים</option>
+                              <option value="c_mada">ועדת המדע</option>
+                              <option value="c_security">תת-וועדת בטחון</option>
+                            </optgroup>
+                        </select>
+                      </div><!-- panel-body -->
+                      <div class="panel-footer text-center">
+                          <div class="btn-group hidden-xs" data-toggle="buttons">
+                            <label class="btn btn-all btn-sm active" id="btnAllLabel">
+                              <input type="radio" name="options" id="btnAll" onchange="filterBySupport(null);  updateMkDisplay();" autocomplete="off">כולם
+                              <span class="badge" id="allCount">0</span>
+                            </label>
+                            <label class="btn btn-no btn-sm" id="btnNoLabel">
+                              <input type="radio" name="options" id="btnNo" onchange="filterBySupport('n');  updateMkDisplay();" autocomplete="off">
+                               מתעלמים מסכנות המאגר
+                              <span class="badge" id="noCount">0</span>
+                            </label>
+                            <label class="btn btn-undecided btn-sm" id="btnUndecidedLabel">
+                              <input type="radio" name="options" id="btnUndecided" onchange="filterBySupport('u');  updateMkDisplay();" autocomplete="off" checked>מתלבטים
+                              <span class="badge" id="undecidedCount">0</span>
+                            </label>
+                            <label class="btn btn-yes btn-sm" id="btnYesLabel">
+                              <input type="radio" name="options" id="btnYes" onchange="filterBySupport('y');  updateMkDisplay();" autocomplete="off">
+                              ימחקו את המאגר
+                              <span class="badge" id="yesCount">0</span>
+                            </label>
+                          </div>
+                          <div class="visible-xs">
+                            <div class="row" data-toggle="buttons">
+                              <label class="btn btn-all btn-block btn-sm active" id="btnAllLabelXs">
+                                <input type="radio" name="options" id="btnAllXs" onchange="filterBySupport(null);  updateMkDisplay();" autocomplete="off">כולם
+                                <span class="badge" id="allCountXs">0</span>
+                              </label>
+                              <label class="btn btn-no btn-block btn-sm" id="btnNoLabelXs">
+                                <input type="radio" name="options" id="btnNoXs" onchange="filterBySupport('n');  updateMkDisplay();" autocomplete="off"> תומכי
+                                 המאגר
+                                <span class="badge" id="noCountXs">0</span>
+                              </label>
+                              <label class="btn btn-undecided btn-block btn-sm" id="btnUndecidedLabelXs">
+                                <input type="radio" name="options" id="btnUndecidedXs" onchange="filterBySupport('u');  updateMkDisplay();" autocomplete="off" checked>מתלבטים
+                                <span class="badge" id="undecidedCountXs">0</span>
+                              </label>
+                              <label class="btn btn-yes btn-block btn-sm" id="btnYesLabelXs">
+                                <input type="radio" name="options" id="btnYesXs" onchange="filterBySupport('y');  updateMkDisplay();" autocomplete="off"> תומכי
+                                 ביטול
+                                <span class="badge" id="yesCountXs">0</span>
+                              </label>
+                            </div>
+                          </div>
+                      </div><!-- panel-footer -->
+                    </div><!-- panel -->
                     <div>
                       <div id="noMksFound">
                         <em>לא נמצאו חברי כנסת העונים לתאור</em>
@@ -94,9 +107,6 @@
                       <ul id="mks" class="mk-list">
 
                       </ul>
-                    </div>
-                    <div>
-                      <small><a href="/" id="filter-permalink">לינק לסינון נוכחי</a></small>
                     </div>
                 </div>
             </div>
