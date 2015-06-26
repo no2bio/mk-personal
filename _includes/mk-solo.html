@@ -73,8 +73,12 @@
                           הוא
                           <a href="mailto:{{include.mk.email}}">{{include.mk.email}}</a>.
                           להלן נוסח מוצע למכתב - אתם מוזמנים להעתיק אותו לתוכנת הדואר שלכם, לערוך אותו, ולשלוח.
+                          <br />
                           {% capture emailFileName %}email-{{mkStatus}}-{{mkGender}}.txt{% endcapture %}
-                          <textarea class="form-control" readonly onclick="this.select()" style="cursor:text; height:10em">{% include {{emailFileName}} mk=mk %}</textarea>
+                          {% capture emailText %}{% include {{emailFileName}} mk=mk %}{% endcapture %}
+                          <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to={{include.mk.email}}&su={{ "עמדתך בנושא המאגר הביומטרי" | URLEncode }}">
+                          <i class="fa fa-envelope"></i>  לפתיחה ב-Gmail</a>
+                          <textarea class="form-control" readonly onclick="this.select()" style="cursor:text; height:10em">{{ emailText }}</textarea>
                         </li>
                       {% endif %}
                   </ul>
