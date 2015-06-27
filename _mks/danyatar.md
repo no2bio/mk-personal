@@ -1,4 +1,4 @@
 ---
 layout: mk
 ---
-* <i class="fa fa-mobile"></i> [תשובת מנואל טרכטנברג](../docs/trajtenberg.png), ערב בחירות 2015 כולל עמדת המפלגה [למעט [ציפי לבני](../docs/Livni.m4a)].
+* <i class="fa fa-bank"></i> [הצביע](https://no2bio.org/drop-the-pilot/#httpsarchiveisduysvselection-31990-321138) נגד הארכת הפיילוט בישיבת הוועדה המשותפת 24/6/2015 (מחליפה: שלי יחימוביץ'))
