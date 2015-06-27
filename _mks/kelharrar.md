@@ -1,4 +1,4 @@
 ---
 layout: mk
 ---
-* <i class="fa fa-newspaper-o"></i> [עמדת המפלגה](https://archive.today/gjQpX#selection-2763.2-2763.176)
+* <i class="fa fa-bank"></i> "[ראוי שהציבור ומקבלי ההחלטות, יכירו את כל העובדות הכרוכות במאגר ביומטרי, כדי שתתקבל ההחלטה הנכונה והטובה ביותר](https://archive.is/ad6q4#selection-1715.47-1715.156)"
