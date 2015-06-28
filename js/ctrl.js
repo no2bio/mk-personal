@@ -170,7 +170,9 @@ function updateMkDisplay() {
   if ( filterBySupportValue ) {
     paramSection = paramSection + ((paramSection.length>0 ? "&" : "" )) + "support=" + filterBySupportValue;
   }
-  $("#filter-permalink").attr("href", window.location.href.split("?")[0] + "?" + paramSection + "#mk-status");
+  $("#filter-permalink").attr("href",
+    window.location.href.split("?")[0].split('#')[0] +
+    (paramSection.length>0 ? ("?" + paramSection) : "") + "#mk-status");
 }
 
 function buildMkContent(mk) {
