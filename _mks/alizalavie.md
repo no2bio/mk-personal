@@ -1,4 +1,5 @@
 ---
 layout: mk
 ---
-* <i class="fa fa-newspaper-o"></i> [עמדת המפלגה](https://archive.today/gjQpX#selection-2763.2-2763.176)
+* <i class="fa fa-twitter"></i> "[המאגר עוכב כל כך, היו המון כשלים וסימני שאלה, אני מצדיעה לסילבן שרוצה ללמוד על הנושא עוד כמה חודשים](https://twitter.com/DigiRightsIL/status/615614750970384384)"
+

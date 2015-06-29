@@ -1,4 +1,4 @@
 ---
 layout: mk
 ---
-* <i class="fa fa-mobile"></i> [תשובת מנואל טרכטנברג](http://elections2015.no2bio.org/docs/trajtenberg.png), ערב בחירות 2015 כולל עמדת המפלגה [למעט [ציפי לבני](http://elections2015.no2bio.org/docs/Livni.m4a)].
+* <i class="fa fa-twitter"></i> "[השר שלום אינטליגנטי, יכול ללמוד גם בחודש, לא צריך תשעה. הסכנות ברורות, להקשיב למומחים](https://twitter.com/DigiRightsIL/status/615608945105735680)"
