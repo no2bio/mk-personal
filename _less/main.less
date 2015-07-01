@@ -24,9 +24,10 @@
     font-style: normal;
 
 }
-
-.bio-red { color:#d12229 }
-.bio-yellow { color:#fee300 }
+@bio-red: #d12229;
+@bio-yellow: #fee300;
+.bio-red { color:@bio-red; }
+.bio-yellow { color:@bio-yellow; }
 
 .intro {
     display: table;
@@ -41,6 +42,12 @@
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+}
+
+.badge.badge-bio {
+  background-color: black;
+  border: 1px solid @bio-red;
+  color: @bio-red;
 }
 
 @color-yes: #32b33b;
