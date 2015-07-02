@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 {% assign mkAlias = page.url | split:'/' | last | split :'.' | first %}
 {% for m in site.data.mks %}{% if m.alias == mkAlias %}{% assign mk=m %}{% endif %}{% endfor %}
-{% assign mkStatus = mk.status | remove:' '%}
+{% assign mkStatus = mk.status | remove:' ' | strip_newlines %}
 {% if mkStatus == '' %} {% assign mkStatus = 'undecided' %} {% endif %}
-{% assign mkGender = mk.gender | remove:' '%}
+{% assign mkGender = mk.gender | remove:' ' | strip_newlines %}
 {% if mkGender == '' %} {% assign mkGender = 'm' %} {% endif %}
 {% capture mkTitle %}{{ site.data.status[mkGender][mkStatus] }}{% endcapture %}
 {% capture mkAction %}{{ site.data.actions[mkGender][mkStatus] }}{% endcapture %}
