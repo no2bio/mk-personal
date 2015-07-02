@@ -33,6 +33,11 @@
   background-size: cover;
   -o-background-size: cover;
 }
+.badge.badge-bio {
+  background-color: black;
+  border: 1px solid #d12229;
+  color: #d12229;
+}
 body {
   direction: rtl;
   font-family: Alef, Helvetica, "Arial Hebrew", Arial;
